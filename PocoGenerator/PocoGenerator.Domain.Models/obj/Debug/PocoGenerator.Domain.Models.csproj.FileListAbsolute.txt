@@ -1,0 +1,6 @@
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.dll
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.pdb
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.csprojResolveAssemblyReference.cache
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.dll
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.pdb
+C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.dll.config
