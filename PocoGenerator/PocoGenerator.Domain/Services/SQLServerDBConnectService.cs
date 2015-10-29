@@ -69,7 +69,7 @@ namespace PocoGenerator.Domain.Services
                             DbName = reader.GetValue(1).ToString()
                         };
 
-                        lstDatabases.Add(db);                        
+                        lstDatabases.Add(db);
                     }
                 }
             }

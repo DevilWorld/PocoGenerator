@@ -21,7 +21,7 @@ namespace PocoGenerator.Domain.Services
                 var connectString = settings.ConnectionString;
 
                 var builder = new SqlConnectionStringBuilder(connectString);
-                
+
                 builder.DataSource = connectionStringProperties.DataSource;
 
                 if (blnPartialConnectionString)
@@ -36,6 +36,8 @@ namespace PocoGenerator.Domain.Services
                 {
                     builder.IntegratedSecurity = true;
                 }
+
+
 
                 return builder.ConnectionString;
             }

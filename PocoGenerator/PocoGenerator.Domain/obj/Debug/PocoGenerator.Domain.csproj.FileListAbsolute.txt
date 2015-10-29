@@ -9,3 +9,14 @@ C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerato
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain\bin\Debug\Autofac.dll
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Common.pdb
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Domain\bin\Debug\Autofac.xml
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Domain.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Domain.pdb
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Common.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Domain.Models.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\Autofac.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Common.pdb
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\PocoGenerator.Domain.Models.pdb
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\Autofac.xml
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.csprojResolveAssemblyReference.cache
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.pdb

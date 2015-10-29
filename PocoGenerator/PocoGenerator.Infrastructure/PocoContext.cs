@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using PocoGenerator.Common;
+using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Infrastructure.Data.Mapping;
 
@@ -12,11 +13,11 @@ namespace PocoGenerator.Infrastructure
 {
     public class PocoContext : DbContext
     {
-        
+        private readonly IConnectionStringService _connectionStringService;
 
-        public PocoContext() : base(@"Data Source=(localDb)\MSSQLLocalDb;Initial Catalog =master;Integrated Security=true;")
+        public PocoContext(IConnectionStringService connectionStringService)
         {
-            
+            _connectionStringService = connectionStringService;
             //this.Database.Connection.ConnectionString = Global.ConnectionString;
         }
 

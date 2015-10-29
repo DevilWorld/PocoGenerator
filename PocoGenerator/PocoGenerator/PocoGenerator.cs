@@ -16,11 +16,11 @@ using PocoGenerator.Common;
 namespace PocoGenerator
 {
     public partial class PocoGenerator : Form
-    {   
+    {
         public static ILifetimeScope scope { get; set; }
 
         //private readonly IDataTypeService _dataTypeService;
-        private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;        
+        private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;
 
         public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/)
         {
@@ -38,9 +38,9 @@ namespace PocoGenerator
         {
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                var objConnectToDB = new ConnectToDatabase(scope.Resolve<IDbConnectService>(), scope.Resolve<IConnectionStringService>(), scope.Resolve<IDataTypeService>());
-                objConnectToDB.MdiParent = this;
-                objConnectToDB.Show();
+                var objConnectToDb = new ConnectToDatabase(scope.Resolve<IDbConnectService>(), scope.Resolve<IConnectionStringService>(), scope.Resolve<IDataTypeService>());
+                //objConnectToDb.MdiParent = this;
+                objConnectToDb.ShowDialog();
             }
         }
 

@@ -4,3 +4,9 @@ C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerato
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.dll
 C:\Users\Dinesh\documents\visual studio 2015\Projects\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.pdb
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\bin\Debug\PocoGenerator.Tests.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\bin\Debug\PocoGenerator.Tests.pdb
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.csprojResolveAssemblyReference.cache
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Tests\obj\Debug\PocoGenerator.Tests.pdb

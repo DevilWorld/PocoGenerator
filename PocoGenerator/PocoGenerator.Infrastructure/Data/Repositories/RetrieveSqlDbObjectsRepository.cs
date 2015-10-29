@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Infrastructure.Data.Repositories;
@@ -25,6 +26,9 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
 
         public IEnumerable<SysObjects> GetTables()
         {
+            //if (string.IsNullOrEmpty(_pocoContext.Database.Connection.ConnectionString))
+                _pocoContext.Database.Connection.ConnectionString = Global.ConnectionString;
+
             return _pocoContext.SysObjects.Where(x => x.XType == "U").ToList();
         }
 
