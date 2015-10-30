@@ -12,6 +12,7 @@ using PocoGenerator.Domain.Services;
 using Autofac;
 using PocoGenerator.StartUp;
 using PocoGenerator.Common;
+using PocoGenerator.Domain.Models.Enums;
 
 namespace PocoGenerator
 {
@@ -46,7 +47,27 @@ namespace PocoGenerator
 
         private void GetTables()
         {
-            var tables = _retrieveDbObjectsService.GetDbObjects("Tables");
+            var tables = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Tables);
+        }
+
+        private void GetViews()
+        {
+            var views = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Views);
+        }
+
+        private void GetStoredProcedures()
+        {
+            var storedProcedures = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.StoredProcedures);
+        }
+
+        private void GetTableValuedFunctions()
+        {
+            var tableValuedFunctions = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.TableValuedFunctions);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

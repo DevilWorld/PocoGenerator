@@ -105,6 +105,7 @@
             this.txtServerName.Name = "txtServerName";
             this.txtServerName.Size = new System.Drawing.Size(279, 22);
             this.txtServerName.TabIndex = 1;
+            this.txtServerName.Text = "(localdb)\\MSSQLLocalDB";
             // 
             // txtUserName
             // 

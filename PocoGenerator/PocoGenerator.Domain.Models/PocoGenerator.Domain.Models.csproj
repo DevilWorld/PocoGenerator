@@ -45,6 +45,7 @@
     <Compile Include="DatabaseName.cs" />
     <Compile Include="DataTypeDto.cs" />
     <Compile Include="Enums\AuthenticationTypes.cs" />
+    <Compile Include="Enums\DbObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysObjects.cs" />
   </ItemGroup>

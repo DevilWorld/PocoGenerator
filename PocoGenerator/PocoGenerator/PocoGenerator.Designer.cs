@@ -33,7 +33,14 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.scBody = new System.Windows.Forms.SplitContainer();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.menuStrip1.SuspendLayout();
+            this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
+            this.scBody.Panel1.SuspendLayout();
+            this.scBody.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -52,6 +59,7 @@
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(78, 28);
             this.toolStripMenuItem1.Text = "DB Filter";
@@ -71,12 +79,41 @@
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(150, 28);
             // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.scBody);
+            this.pnlBody.Location = new System.Drawing.Point(0, 35);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(1282, 818);
+            this.pnlBody.TabIndex = 3;
+            // 
+            // scBody
+            // 
+            this.scBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scBody.Location = new System.Drawing.Point(0, 0);
+            this.scBody.Name = "scBody";
+            // 
+            // scBody.Panel1
+            // 
+            this.scBody.Panel1.Controls.Add(this.treeView1);
+            this.scBody.Size = new System.Drawing.Size(1282, 818);
+            this.scBody.SplitterDistance = 427;
+            this.scBody.TabIndex = 0;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(3, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(421, 818);
+            this.treeView1.TabIndex = 0;
+            // 
             // PocoGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1282, 853);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -87,6 +124,10 @@
             this.Text = "Poco Generator";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlBody.ResumeLayout(false);
+            this.scBody.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scBody)).EndInit();
+            this.scBody.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +140,9 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.Panel pnlBody;
+        private System.Windows.Forms.SplitContainer scBody;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

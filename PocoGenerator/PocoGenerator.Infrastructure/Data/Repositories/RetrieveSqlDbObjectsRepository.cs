@@ -21,25 +21,35 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
 
         public IEnumerable<SysObjects> GetStoredProcedures()
         {
-            throw new NotImplementedException();
+            SetConnectionStringForDbToBeConnected();
+
+            return _pocoContext.SysObjects.Where(x => x.xtype == "P").ToList();
         }
 
         public IEnumerable<SysObjects> GetTables()
         {
-            //if (string.IsNullOrEmpty(_pocoContext.Database.Connection.ConnectionString))
-                _pocoContext.Database.Connection.ConnectionString = Global.ConnectionString;
+            SetConnectionStringForDbToBeConnected();
 
-            return _pocoContext.SysObjects.Where(x => x.XType == "U").ToList();
+            return _pocoContext.SysObjects.Where(x => x.xtype == "U").ToList();
         }
 
         public IEnumerable<SysObjects> GetTableValuedFunctions()
         {
-            throw new NotImplementedException();
+            SetConnectionStringForDbToBeConnected();
+
+            return _pocoContext.SysObjects.Where(x => x.xtype == "FT").ToList();
         }
 
         public IEnumerable<SysObjects> GetViews()
         {
-            throw new NotImplementedException();
+            SetConnectionStringForDbToBeConnected();
+
+            return _pocoContext.SysObjects.Where(x => x.xtype == "V").ToList();
+        }
+
+        private void SetConnectionStringForDbToBeConnected()
+        {
+            _pocoContext.Database.Connection.ConnectionString = Global.ConnectionString;
         }
     }
 }

@@ -12,11 +12,12 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
     {
         public SysObjectsMapping()
         {
-            ToTable("SysObjects");
+            ToTable("sys.sysobjects");
+            HasKey(pk => pk.id);
 
-            Property(p => p.Id).HasColumnName("id").HasColumnType("int");
-            Property(p => p.Name).HasColumnName("name").HasColumnType("sysname");
-            Property(p => p.XType).HasColumnName("xtype").HasColumnType("char");
+            //Property(p => p.id).HasColumnName("id").HasColumnType("int");
+            Property(p => p.name).HasColumnName("name").HasColumnType("nvarchar");
+            Property(p => p.xtype).HasColumnName("xtype").HasColumnType("char");            
         }
     }
 }

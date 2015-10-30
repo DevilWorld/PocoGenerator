@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.Enums;
 
 namespace PocoGenerator.Domain.Services
 {
@@ -17,17 +18,17 @@ namespace PocoGenerator.Domain.Services
             _retrieveDbObjectsRepository = retrieveDbObjectsRepository;
         }
 
-        public IEnumerable<SysObjects> GetDbObjects(string strDbObjectType)
+        public IEnumerable<SysObjects> GetDbObjects(DbObjectTypes dbObjectType)
         {
-            switch(strDbObjectType)
+            switch(dbObjectType)
             {
-                case "Tables":
+                case DbObjectTypes.Tables:
                    return _retrieveDbObjectsRepository.GetTables();
-                case "Stored Procedures":
+                case DbObjectTypes.StoredProcedures:
                     return _retrieveDbObjectsRepository.GetStoredProcedures();
-                case "Views":
+                case DbObjectTypes.Views:
                     return _retrieveDbObjectsRepository.GetViews();
-                case "Table Valued Functions":
+                case DbObjectTypes.TableValuedFunctions:
                     return _retrieveDbObjectsRepository.GetTableValuedFunctions();
                 default:
                     return new List<SysObjects>();

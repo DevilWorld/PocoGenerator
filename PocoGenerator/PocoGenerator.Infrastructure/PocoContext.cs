@@ -18,6 +18,8 @@ namespace PocoGenerator.Infrastructure
         public PocoContext(IConnectionStringService connectionStringService)
         {
             _connectionStringService = connectionStringService;
+
+            Database.SetInitializer<PocoContext>(null);
             //this.Database.Connection.ConnectionString = Global.ConnectionString;
         }
 
