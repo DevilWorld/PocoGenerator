@@ -28,6 +28,8 @@ namespace PocoGenerator.Infrastructure
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new SysObjectsMapping());
+            modelBuilder.Configurations.Add(new SysColumnsMapping());
+            modelBuilder.Configurations.Add(new KeyColumnNamesMapping());
         }
     }
 }
