@@ -13,6 +13,8 @@ using Autofac;
 using PocoGenerator.StartUp;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.Enums;
+using PocoGenerator.Common.ExtensionMethods;
+using PocoGenerator.Domain.Models;
 
 namespace PocoGenerator
 {
@@ -32,6 +34,8 @@ namespace PocoGenerator
 
             DisplayConnectToDatabase();
 
+            LoadDatabaseTree();
+
             GetTables();
         }
 
@@ -39,35 +43,108 @@ namespace PocoGenerator
         {
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                var objConnectToDb = new ConnectToDatabase(scope.Resolve<IDbConnectService>(), scope.Resolve<IConnectionStringService>(), scope.Resolve<IDataTypeService>());
+                var objConnectToDb = scope.Resolve<ConnectToDatabase>();
                 //objConnectToDb.MdiParent = this;
                 objConnectToDb.ShowDialog();
             }
         }
 
-        private void GetTables()
+        private void LoadDatabaseTree()
         {
-            var tables = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Tables);
+            foreach (DbObjectTypes dbObjectType in Enum.GetValues(typeof(DbObjectTypes)))
+            {
+                TreeNode node = new TreeNode(dbObjectType.GetDbObjectTypesDescription(), GetChildNodes(dbObjectType));
+
+                tvDatabase.Nodes.Add(node);
+            }
         }
 
-        private void GetViews()
+        private TreeNode[] GetChildNodes(DbObjectTypes dbObjectType)
         {
-            var views = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Views);
+            switch (dbObjectType)
+            {
+                case DbObjectTypes.Tables:
+                    return GetTables().ToList().Select(x => new TreeNode(x.name)).ToArray();
+
+                case DbObjectTypes.Views:
+                    return GetViews().ToList().Select(x => new TreeNode(x.name)).ToArray();
+
+                case DbObjectTypes.StoredProcedures:
+                    return GetStoredProcedures().ToList().Select(x => new TreeNode(x.name)).ToArray();
+
+                case DbObjectTypes.TableValuedFunctions:
+                    return GetTableValuedFunctions().ToList().Select(x => new TreeNode(x.name)).ToArray();
+
+                default:
+                    return new TreeNode[0];
+            }
         }
 
-        private void GetStoredProcedures()
+        private IEnumerable<SysObjects> GetTables()
         {
-            var storedProcedures = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.StoredProcedures);
+            return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Tables);
         }
 
-        private void GetTableValuedFunctions()
+        private IEnumerable<SysObjects> GetViews()
         {
-            var tableValuedFunctions = _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.TableValuedFunctions);
+            return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.Views);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private IEnumerable<SysObjects> GetStoredProcedures()
         {
+            return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.StoredProcedures);
+        }
 
+        private IEnumerable<SysObjects> GetTableValuedFunctions()
+        {
+            return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.TableValuedFunctions);
+        }
+
+        private void CheckUncheckChildNodes(TreeNodeCollection nodes, bool blnCheckUncheck)
+        {
+            //nodes.Cast<TreeNode>().ToList().ForEach(x => x.Checked = blnCheckUncheck);
+        }
+
+        private bool blnChild = false;
+
+        private void tvDatabase_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            CheckUncheckParentNode(e);
+
+            if (e.Node.Parent!= null)
+
+            
+            if (e.Action != TreeViewAction.Unknown)
+            {
+                if (e.Node.Nodes.Count > 0)
+                {
+                    e.Node.Nodes.Cast<TreeNode>().ToList().ForEach(x => x.Checked = e.Node.Checked);
+                }
+            }            
+        }
+
+        /// <summary>
+        /// Unchecks the parent node, if one of its child node is unchecked
+        /// </summary>
+        /// <param name="e"></param>
+        private void CheckUncheckParentNode(TreeViewEventArgs e)
+        {
+            if (e.Node.Parent != null)
+            {                
+                e.Node.Parent.Checked = e.Node.Checked;                
+            }
+        }
+
+        private bool ChildNodesInSameState(TreeNode node)
+        {
+            if (node.Parent != null)
+            {
+                var childNodesState = node.Parent.Nodes.Cast<TreeNode>().ToList().Where(x => x.Checked == node.Checked).ToList().Count;
+
+                return childNodesState == node.Parent.Nodes.Count;
+            }
+
+            return false;
         }
     }
 }

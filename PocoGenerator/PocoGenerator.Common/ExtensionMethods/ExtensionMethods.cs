@@ -21,5 +21,22 @@ namespace PocoGenerator.Common.ExtensionMethods
                     return string.Empty;
             }
         }
+
+        public static string GetDbObjectTypesDescription(this DbObjectTypes e)
+        {
+            switch(e)
+            {
+                case DbObjectTypes.Tables:
+                    return "Tables";
+                case DbObjectTypes.Views:
+                    return "Views";
+                case DbObjectTypes.StoredProcedures:
+                    return "Stored Procedures";
+                case DbObjectTypes.TableValuedFunctions:
+                    return "Table Valued Functions";
+                default:
+                    return string.Empty;
+            }
+        }
     }
 }

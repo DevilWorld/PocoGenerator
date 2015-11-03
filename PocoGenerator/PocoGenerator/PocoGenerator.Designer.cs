@@ -35,7 +35,7 @@
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.scBody = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvDatabase = new System.Windows.Forms.TreeView();
             this.menuStrip1.SuspendLayout();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
@@ -95,17 +95,19 @@
             // 
             // scBody.Panel1
             // 
-            this.scBody.Panel1.Controls.Add(this.treeView1);
+            this.scBody.Panel1.Controls.Add(this.tvDatabase);
             this.scBody.Size = new System.Drawing.Size(1282, 818);
             this.scBody.SplitterDistance = 427;
             this.scBody.TabIndex = 0;
             // 
-            // treeView1
+            // tvDatabase
             // 
-            this.treeView1.Location = new System.Drawing.Point(3, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(421, 818);
-            this.treeView1.TabIndex = 0;
+            this.tvDatabase.CheckBoxes = true;
+            this.tvDatabase.Location = new System.Drawing.Point(0, 0);
+            this.tvDatabase.Name = "tvDatabase";
+            this.tvDatabase.Size = new System.Drawing.Size(424, 818);
+            this.tvDatabase.TabIndex = 0;
+            this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);
             // 
             // PocoGenerator
             // 
@@ -142,7 +144,7 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.SplitContainer scBody;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvDatabase;
     }
 }
 
