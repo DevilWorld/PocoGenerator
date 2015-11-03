@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Mapping\KeyColumnNamesMapping.cs" />
+    <Compile Include="Data\Mapping\SysColumnsMapping.cs" />
     <Compile Include="Data\Mapping\SysObjectsMapping.cs" />
     <Compile Include="Data\Repositories\RetrieveSqlDbObjectsRepository.cs" />
     <Compile Include="PocoContext.cs" />

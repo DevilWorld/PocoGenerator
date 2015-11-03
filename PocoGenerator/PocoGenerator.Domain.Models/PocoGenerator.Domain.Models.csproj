@@ -46,6 +46,7 @@
     <Compile Include="DataTypeDto.cs" />
     <Compile Include="Enums\AuthenticationTypes.cs" />
     <Compile Include="Enums\DbObjects.cs" />
+    <Compile Include="KeyColumnNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SysColumns.cs" />
     <Compile Include="SysObjects.cs" />
