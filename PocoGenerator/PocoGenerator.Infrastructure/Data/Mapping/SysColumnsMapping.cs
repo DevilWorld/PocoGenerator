@@ -13,6 +13,7 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
         public SysColumnsMapping()
         {
             ToTable("sys.syscolumns");
+            HasKey(pk => pk.name);
 
             Property(p => p.id).HasColumnName("id").HasColumnType("int");
             Property(p => p.name).HasColumnName("name").HasColumnType("nvarchar");

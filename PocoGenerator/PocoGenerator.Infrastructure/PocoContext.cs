@@ -24,6 +24,8 @@ namespace PocoGenerator.Infrastructure
         }
 
         public DbSet<SysObjects> SysObjects { get; set; }
+        public DbSet<SysColumns> SysColumns { get; set; }
+        public DbSet<KeyColumnNames> KeyColumnNames { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

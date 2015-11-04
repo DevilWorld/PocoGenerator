@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.DTO;
 
 namespace PocoGenerator.Domain.Interfaces
 {
     public interface IRetrieveDbObjectsRepository
     {
-        IEnumerable<SysObjects> GetTables();
-        IEnumerable<SysObjects> GetViews();
-        IEnumerable<SysObjects> GetStoredProcedures();
-        IEnumerable<SysObjects> GetTableValuedFunctions();
+        IEnumerable<TablesWithColumnsDto> GetTables();
+        IEnumerable<TablesWithColumnsDto> GetViews();
+        IEnumerable<TablesWithColumnsDto> GetStoredProcedures();
+        IEnumerable<TablesWithColumnsDto> GetTableValuedFunctions();
     }
 }

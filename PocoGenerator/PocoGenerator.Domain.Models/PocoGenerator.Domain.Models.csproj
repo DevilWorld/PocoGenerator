@@ -44,6 +44,7 @@
     <Compile Include="ConnectionStringProperties.cs" />
     <Compile Include="DatabaseName.cs" />
     <Compile Include="DataTypeDto.cs" />
+    <Compile Include="DTO\TablesWithColumnsDto.cs" />
     <Compile Include="Enums\AuthenticationTypes.cs" />
     <Compile Include="Enums\DbObjects.cs" />
     <Compile Include="KeyColumnNames.cs" />

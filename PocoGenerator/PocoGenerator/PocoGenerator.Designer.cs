@@ -102,7 +102,6 @@
             // 
             // tvDatabase
             // 
-            this.tvDatabase.CheckBoxes = true;
             this.tvDatabase.Location = new System.Drawing.Point(0, 0);
             this.tvDatabase.Name = "tvDatabase";
             this.tvDatabase.Size = new System.Drawing.Size(424, 818);

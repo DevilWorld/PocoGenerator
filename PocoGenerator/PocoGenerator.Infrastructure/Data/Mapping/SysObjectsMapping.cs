@@ -17,7 +17,12 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
 
             //Property(p => p.id).HasColumnName("id").HasColumnType("int");
             Property(p => p.name).HasColumnName("name").HasColumnType("nvarchar");
-            Property(p => p.xtype).HasColumnName("xtype").HasColumnType("char");            
+            Property(p => p.xtype).HasColumnName("xtype").HasColumnType("char");
+
+            HasMany(c => c.Columns)
+                .WithRequired(t => t.Table)
+                .HasForeignKey(fk => fk.id);
+
         }
     }
 }

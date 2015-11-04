@@ -11,5 +11,7 @@ namespace PocoGenerator.Domain.Models
         public int id { get; set; }
         public string name { get; set; }
         public string xtype { get; set; }
+
+        public virtual ICollection<SysColumns> Columns { get; set; }
     }
 }

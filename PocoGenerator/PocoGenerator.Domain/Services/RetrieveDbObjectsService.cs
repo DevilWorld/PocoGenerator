@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.Enums;
+using PocoGenerator.Domain.Models.DTO;
 
 namespace PocoGenerator.Domain.Services
 {
@@ -18,7 +19,7 @@ namespace PocoGenerator.Domain.Services
             _retrieveDbObjectsRepository = retrieveDbObjectsRepository;
         }
 
-        public IEnumerable<SysObjects> GetDbObjects(DbObjectTypes dbObjectType)
+        public IEnumerable<TablesWithColumnsDto> GetDbObjects(DbObjectTypes dbObjectType)
         {
             switch(dbObjectType)
             {
@@ -31,7 +32,7 @@ namespace PocoGenerator.Domain.Services
                 case DbObjectTypes.TableValuedFunctions:
                     return _retrieveDbObjectsRepository.GetTableValuedFunctions();
                 default:
-                    return new List<SysObjects>();
+                    return new List<TablesWithColumnsDto>();
             }
         }
     }

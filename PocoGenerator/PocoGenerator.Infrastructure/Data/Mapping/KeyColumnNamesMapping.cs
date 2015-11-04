@@ -13,6 +13,7 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
         public KeyColumnNamesMapping()
         {
             ToTable("information_schema.key_column_usage");
+            HasKey(pk => pk.COLUMN_NAME);
 
             Property(p => p.CONSTRAINT_CATALOG).HasColumnName("CONSTRAINT_CATALOG");
             Property(p => p.CONSTRAINT_SCHEMA).HasColumnName("CONSTRAINT_SCHEMA");

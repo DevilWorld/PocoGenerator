@@ -10,6 +10,10 @@ namespace PocoGenerator.Domain.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int colorder { get; set; }
+        public Int16 colorder { get; set; }
+
+        //public int ObjectId { get; set; }
+
+        public virtual SysObjects Table { get; set; }
     }
 }
