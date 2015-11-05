@@ -7,7 +7,7 @@ using PocoGenerator.Domain.Models.Enums;
 
 namespace PocoGenerator.Common.ExtensionMethods
 {
-    public static class ExtensionMethods
+    public static partial class ExtensionMethods
     {
         public static string GetAuthenticationTypesDescription(this AuthenticationTypes e)
         {

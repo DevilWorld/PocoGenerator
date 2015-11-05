@@ -102,8 +102,11 @@
             // 
             // tvDatabase
             // 
+            this.tvDatabase.CheckBoxes = true;
+            this.tvDatabase.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.tvDatabase.Location = new System.Drawing.Point(0, 0);
             this.tvDatabase.Name = "tvDatabase";
+            this.tvDatabase.ShowLines = false;
             this.tvDatabase.Size = new System.Drawing.Size(424, 818);
             this.tvDatabase.TabIndex = 0;
             this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);

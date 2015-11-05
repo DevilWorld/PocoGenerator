@@ -71,3 +71,6 @@ C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\obj\Debug
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\obj\Debug\PocoGenerator.Properties.Resources.resources
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\obj\Debug\PocoGenerator.TypeMapping.TypeMapper.resources
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\obj\Debug\PocoGenerator.csproj.GenerateResource.Cache
+C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\database.jpg
+C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\folder.jpg
+C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\table.png
