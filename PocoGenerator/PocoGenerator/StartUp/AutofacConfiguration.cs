@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Services;
+using PocoGenerator.Domain.Services.Templates;
 using PocoGenerator.DatabaseConnection;
 using PocoGenerator.Common;
 using PocoGenerator.TypeMapping;
@@ -21,6 +22,9 @@ namespace PocoGenerator.StartUp
             builder.RegisterType<ConnectionStringService>().AsImplementedInterfaces();
             builder.RegisterType<SqlDataTypeService>().AsImplementedInterfaces();
             builder.RegisterType<RetrieveDbObjectsService>().AsImplementedInterfaces();
+            builder.RegisterType<GenerateTemplateService>().AsImplementedInterfaces();
+            builder.RegisterType<ClassTemplateService>().AsImplementedInterfaces();
+            builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();
 
             //Register Repositories
             builder.RegisterType<RetrieveSqlDbObjectsRepository>().AsImplementedInterfaces();

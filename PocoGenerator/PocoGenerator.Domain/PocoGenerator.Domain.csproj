@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotLiquid, Version=1.8.0.0, Culture=neutral, PublicKeyToken=82e46016ecf9f07c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotLiquid.1.8.0\lib\NET45\DotLiquid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -45,13 +49,18 @@
     <Compile Include="Interfaces\IDataTypeService.cs" />
     <Compile Include="Interfaces\IDbConnectService.cs" />
     <Compile Include="Interfaces\IDbContext.cs" />
+    <Compile Include="Interfaces\Templates\IGenerateTemplate.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsRepository.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsService.cs" />
+    <Compile Include="Interfaces\Templates\ITemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConnectionStringService.cs" />
+    <Compile Include="Services\Templates\GenerateTemplateService.cs" />
     <Compile Include="Services\RetrieveDbObjectsService.cs" />
     <Compile Include="Services\SqlDataTypeService.cs" />
     <Compile Include="Services\SQLServerDBConnectService.cs" />
+    <Compile Include="Services\Templates\ClassTemplateService.cs" />
+    <Compile Include="Services\Templates\PropertiesTemplateSevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PocoGenerator.Common\PocoGenerator.Common.csproj">
@@ -62,6 +71,9 @@
       <Project>{92042da6-4d20-44bf-880d-b947679377f4}</Project>
       <Name>PocoGenerator.Domain.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

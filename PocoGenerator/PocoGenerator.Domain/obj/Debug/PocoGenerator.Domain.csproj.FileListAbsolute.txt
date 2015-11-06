@@ -31,3 +31,4 @@ C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bi
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.dll
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\obj\Debug\PocoGenerator.Domain.pdb
+C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain\bin\Debug\DotLiquid.dll

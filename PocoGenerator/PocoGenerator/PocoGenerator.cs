@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PocoGenerator.DatabaseConnection;
 using PocoGenerator.Domain.Interfaces;
+using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Services;
 using Autofac;
 using PocoGenerator.StartUp;
@@ -33,6 +34,14 @@ namespace PocoGenerator
 
             //_dataTypeService = dataTypeService;
             _retrieveDbObjectsService = retrieveDbObjectsService;
+
+            //Test
+            using (var scope = Global.Container.BeginLifetimeScope())
+            {
+                var templateService = scope.Resolve<IGenerateTemplate>();
+                templateService.Generate(ObjectTemplate.Class, new SysObjects());
+            }
+            //Endof test
 
             DisplayConnectToDatabase();
 
@@ -87,7 +96,7 @@ namespace PocoGenerator
 
                         return node;
 
-                     }).ToArray();
+                    }).ToArray();
 
                 case DbObjectTypes.Views:
                     return GetViews().ToList().Select(x => new TreeNode(" " + x.Name,

@@ -74,3 +74,4 @@ C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\obj\Debug
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\database.jpg
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\folder.jpg
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\Images\table.png
+C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator\bin\Debug\DotLiquid.dll
