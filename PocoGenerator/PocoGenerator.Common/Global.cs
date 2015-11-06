@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using DotLiquid;
+using PocoGenerator.Domain.Models.Enums;
 
 
 namespace PocoGenerator.Common
@@ -16,5 +18,8 @@ namespace PocoGenerator.Common
         public static string ConnectionString { get; set; }
 
         public static IDictionary<string, string> DataTypeMapper { get; set; }
+
+        public static IDictionary<ObjectTemplate, Template> ParsedTemplates { get; set; }
+
     }
 }

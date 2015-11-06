@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces.Templates;
+using DotLiquid;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -16,10 +17,10 @@ namespace PocoGenerator.Domain.Services.Templates
             _propertiesTemplateService = propertiesTemplateService;
         }
 
-        public string GetTemplate()
+        public Template GetTemplate()
         {
             StringBuilder sbTemplate = new StringBuilder();
-            sbTemplate.Append("public class {{className}}");
+            sbTemplate.Append("public class {{sysobjects.Name}}");
             sbTemplate.AppendLine();
             sbTemplate.Append("{");
             sbTemplate.AppendLine();
@@ -28,8 +29,7 @@ namespace PocoGenerator.Domain.Services.Templates
             sbTemplate.AppendLine();
             sbTemplate.Append("}");
 
-            return sbTemplate.ToString();
-
+            return Template.Parse(sbTemplate.ToString());
         }
     }
 }

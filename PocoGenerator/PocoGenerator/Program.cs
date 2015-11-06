@@ -20,8 +20,9 @@ namespace PocoGenerator
         [STAThread]
         static void Main()
         {
-            //Autofac configuration
+            //Configurations
             AutofacConfiguration.Configure();
+            DotLiquidConfiguration.Configue();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -23,7 +23,7 @@ namespace PocoGenerator
 {
     public partial class PocoGenerator : Form
     {
-        public static ILifetimeScope scope { get; set; }
+        //public static ILifetimeScope scope { get; set; }
 
         //private readonly IDataTypeService _dataTypeService;
         private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;
@@ -38,7 +38,7 @@ namespace PocoGenerator
             //Test
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                var templateService = scope.Resolve<IGenerateTemplate>();
+                var templateService = scope.Resolve<IGenerateObjectFromTemplate>();
                 templateService.Generate(ObjectTemplate.Class, new SysObjects());
             }
             //Endof test
@@ -157,7 +157,7 @@ namespace PocoGenerator
         //                        .ForEach(y => y.Nodes
         //                                        .Cast<TreeNode>()
         //                                        .ToList()
-        //                                        .ForEach(z=> z.HideCheckBox()))                                        
+        //                                        .ForEach(z=> z.HideCheckBox()))
         //                );
         //}
 
@@ -216,7 +216,7 @@ namespace PocoGenerator
 
         //private void tvDatabase_DrawNode(object sender, DrawTreeNodeEventArgs e)
         //{
-        //    if (e.Node.Level == 2)                            
+        //    if (e.Node.Level == 2)
         //        e.Node.HideCheckBox();
 
         //    if (e.Node.Level == 0 || e.Node.Level == 1)

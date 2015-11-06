@@ -53,3 +53,4 @@ C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Infrastru
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Infrastructure\obj\Debug\PocoGenerator.Infrastructure.dll
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Infrastructure\obj\Debug\PocoGenerator.Infrastructure.pdb
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Infrastructure\bin\Debug\DotLiquid.dll
+C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGenerator.Infrastructure\bin\Debug\DotLiquid.dll

@@ -7,10 +7,11 @@ using DotLiquid;
 using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.DotLiquidDrops;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
-    public class GenerateTemplateService : IGenerateTemplate
+    public class GenerateTemplateService : IGenerateObjectFromTemplate<>
     {
         private readonly ITemplate<ClassTemplateService> _template;
 
@@ -23,12 +24,14 @@ namespace PocoGenerator.Domain.Services.Templates
         {
             if (objectType == ObjectTemplate.Class)
             {
-                Template templateClass = Template.Parse(_template.GetTemplate());
-                
-                templateClass.Render();
+                Template templateClass = _template.GetTemplate();
+
+                var result = templateClass.Render(
+                    Hash.FromAnonymousObject(
+                        new {sysobjects = new SysObjectsDrop(sysobjects)}));
             }
 
             return string.Empty;
-        }        
+        }
     }
 }
