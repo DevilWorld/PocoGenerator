@@ -50,7 +50,7 @@
     <Compile Include="Interfaces\IDataTypeService.cs" />
     <Compile Include="Interfaces\IDbConnectService.cs" />
     <Compile Include="Interfaces\IDbContext.cs" />
-    <Compile Include="Interfaces\Templates\IGenerateObjectFromTemplate.cs" />
+    <Compile Include="Interfaces\Templates\IGenerateTemplate.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsRepository.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsService.cs" />
     <Compile Include="Interfaces\Templates\ITemplate.cs" />

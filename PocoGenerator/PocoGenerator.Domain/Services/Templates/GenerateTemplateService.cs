@@ -12,43 +12,56 @@ using PocoGenerator.Common;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
-    public class GenerateTemplateService : IGenerateObjectFromTemplate<GenerateTemplateService>
+    public class GenerateTemplateService : IGenerateTemplate
     {
-        private readonly ITemplate<ClassTemplateService> _template;
+        //private readonly ITemplate<SysObjects> _template;
 
-        public GenerateTemplateService(ITemplate<ClassTemplateService> template)
+        public GenerateTemplateService(/*ITemplate<SysObjects> template*/)
         {
-            _template = template;
+            //_template = template;
         }
 
-        public void GetTemplateObject(ObjectTemplate templateType)
+        //public void GetTemplateObject(TemplateType templateType)
+        //{
+        //    switch (templateType)
+        //    {
+        //        case TemplateType.Class:
+        //            {
+        //                var template = Global.ParsedTemplates[TemplateType.Class];
+        //                var result = template.Render(Hash.FromAnonymousObject(new { sysobjects = new SysObjectsDrop(new SysObjects() { name = "tblAddress" }) }));
+        //                break;
+        //            }
+        //        default:
+        //            {
+        //                var template = Global.ParsedTemplates[TemplateType.Class];
+        //                break;
+        //            }
+        //    }
+        //}
+
+        public string Generate(TemplateType templateType, SysObjects sysObjects = null, SysColumns sysColumns = null, KeyColumnNames keyColumnsNames = null)
         {
             switch (templateType)
             {
-                case ObjectTemplate.Class:
+                case TemplateType.Class:
                     {
-                        var template = Global.ParsedTemplates[ObjectTemplate.Class];
-                        var result = template.Render(Hash.FromAnonymousObject(new { sysobjects = new SysObjectsDrop(new SysObjects() { name = "tblAddress" }) }));
+                        if (sysObjects != null)
+                        {
+                            var template = Global.TemplateManager[TemplateType.Class];
+                            var result =
+                                template.Render(
+                                    Hash.FromAnonymousObject(new {@class = new SysObjectsDrop(sysObjects)}));
+
+                            return result;
+                        }
                         break;
                     }
                 default:
                     {
-                        var template = Global.ParsedTemplates[ObjectTemplate.Class];
-                        break;                        
+                        var template = Global.TemplateManager[TemplateType.Class];
+                        break;
                     }
-            }            
-        }
-
-        public string Generate(ITemplate<GenerateTemplateService> template, SysObjects sysobject)
-        {
-            //if (objectType == ObjectTemplate.Class)
-            //{
-            //    Template templateClass = _template.GetTemplate();
-
-            //    var result = templateClass.Render(
-            //        Hash.FromAnonymousObject(
-            //            new { sysobjects = new SysObjectsDrop(sysobjects) }));
-            //}
+            }
 
             return string.Empty;
         }

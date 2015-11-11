@@ -39,8 +39,8 @@ namespace PocoGenerator
             //Test
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                var templateService = scope.Resolve<IGenerateObjectFromTemplate<GenerateTemplateService>>();
-                templateService.GetTemplateObject(ObjectTemplate.Class);
+                var templateService = scope.Resolve<IGenerateTemplate>();
+                templateService.Generate(TemplateType.Class, new SysObjects() {name = "tblAddress"});
             }
             //Endof test
 

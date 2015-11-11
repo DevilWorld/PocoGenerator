@@ -7,6 +7,7 @@ using Autofac;
 using DotLiquid;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces.Templates;
+using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Services.Templates;
 using PocoGenerator.Domain.Models.Enums;
 
@@ -18,15 +19,13 @@ namespace PocoGenerator.StartUp
         {
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                
-
-                Dictionary<ObjectTemplate, Template> parsedTemplates = new Dictionary<ObjectTemplate, Template>
+                Dictionary<TemplateType, Template> parsedTemplates = new Dictionary<TemplateType, Template>
                 {
-                    //{ ObjectTemplate.Class, scope.Resolve<ITemplate<ClassTemplateService>>().GetTemplate() },
-                    { ObjectTemplate.Properties, scope.Resolve<PropertiesTemplateSevice>().GetTemplate() }
+                    { TemplateType.Class, scope.Resolve<ITemplate<SysObjects>>().GetTemplate() },
+                    { TemplateType.Properties, scope.Resolve<ITemplate<SysColumns>>().GetTemplate() }
                 };
 
-                Global.ParsedTemplates = parsedTemplates;
+                Global.TemplateManager = parsedTemplates;
             }
         }
     }

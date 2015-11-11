@@ -19,7 +19,6 @@ namespace PocoGenerator.Common
 
         public static IDictionary<string, string> DataTypeMapper { get; set; }
 
-        public static IDictionary<ObjectTemplate, Template> ParsedTemplates { get; set; }
-
+        public static IDictionary<TemplateType, Template> TemplateManager { get; set; }
     }
 }

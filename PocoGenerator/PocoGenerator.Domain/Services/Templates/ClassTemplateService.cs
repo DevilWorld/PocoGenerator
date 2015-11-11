@@ -11,9 +11,9 @@ namespace PocoGenerator.Domain.Services.Templates
 {
     public class ClassTemplateService : ITemplate<SysObjects>
     {
-        private readonly ITemplate<PropertiesTemplateSevice> _propertiesTemplateService;
+        private readonly ITemplate<SysColumns> _propertiesTemplateService;
 
-        public ClassTemplateService(ITemplate<PropertiesTemplateSevice> propertiesTemplateService)
+        public ClassTemplateService(ITemplate<SysColumns> propertiesTemplateService)
         {
             _propertiesTemplateService = propertiesTemplateService;
         }
@@ -21,7 +21,7 @@ namespace PocoGenerator.Domain.Services.Templates
         public Template GetTemplate()
         {
             StringBuilder sbTemplate = new StringBuilder();
-            sbTemplate.Append("public class {{sysobjects.Name}}");
+            sbTemplate.Append("public class {{class.name}}"); //sysobjects.Name
             sbTemplate.AppendLine();
             sbTemplate.Append("{");
             sbTemplate.AppendLine();

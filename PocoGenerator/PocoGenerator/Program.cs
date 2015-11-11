@@ -9,6 +9,9 @@ using PocoGenerator.Common;
 using PocoGenerator.TypeMapping;
 using PocoGenerator.Domain.Interfaces;
 using Autofac.Core;
+using PocoGenerator.Domain.Interfaces.Templates;
+using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.Enums;
 
 namespace PocoGenerator
 {
@@ -26,6 +29,14 @@ namespace PocoGenerator
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Test
+            using (var scope = Global.Container.BeginLifetimeScope())
+            {
+                var templateService = scope.Resolve<IGenerateTemplate>();
+                templateService.Generate(TemplateType.Class, new SysObjects() { name = "tblAddress" });
+            }
+            //Endof test
 
             using (var scope = Global.Container.BeginLifetimeScope())
             {
