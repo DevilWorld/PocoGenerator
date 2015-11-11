@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces.Templates;
 using DotLiquid;
+using PocoGenerator.Domain.Models;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
-    public class ClassTemplateService : ITemplate<ClassTemplateService>
+    public class ClassTemplateService : ITemplate<SysObjects>
     {
         private readonly ITemplate<PropertiesTemplateSevice> _propertiesTemplateService;
 

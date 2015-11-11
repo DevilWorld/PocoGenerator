@@ -18,11 +18,15 @@ namespace PocoGenerator.StartUp
         {
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                Global.ParsedTemplates.Add(ObjectTemplate.Class,
-                    scope.Resolve<ITemplate<ClassTemplateService>>().GetTemplate());
+                
 
-                Global.ParsedTemplates.Add(ObjectTemplate.Properties,
-                    scope.Resolve<ITemplate<PropertiesTemplateSevice>>().GetTemplate());
+                Dictionary<ObjectTemplate, Template> parsedTemplates = new Dictionary<ObjectTemplate, Template>
+                {
+                    //{ ObjectTemplate.Class, scope.Resolve<ITemplate<ClassTemplateService>>().GetTemplate() },
+                    { ObjectTemplate.Properties, scope.Resolve<PropertiesTemplateSevice>().GetTemplate() }
+                };
+
+                Global.ParsedTemplates = parsedTemplates;
             }
         }
     }

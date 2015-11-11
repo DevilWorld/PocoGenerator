@@ -13,6 +13,5 @@ C:\Users\dinesh.venkatachalam\Source\MyRepos\PocoGenerator\PocoGenerator\PocoGen
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.dll.config
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.dll
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\bin\Debug\PocoGenerator.Domain.Models.pdb
-C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.csprojResolveAssemblyReference.cache
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.dll
 C:\Users\Dinesh\Source\Repos\PocoGenerator\PocoGenerator\PocoGenerator.Domain.Models\obj\Debug\PocoGenerator.Domain.Models.pdb

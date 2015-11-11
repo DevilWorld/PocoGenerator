@@ -7,6 +7,8 @@ using PocoGenerator.Common;
 using PocoGenerator.TypeMapping;
 using PocoGenerator.Infrastructure.Data.Repositories;
 using PocoGenerator.Infrastructure;
+using PocoGenerator.Domain.Interfaces.Templates;
+using PocoGenerator.Domain.Models;
 
 namespace PocoGenerator.StartUp
 {
@@ -23,8 +25,19 @@ namespace PocoGenerator.StartUp
             builder.RegisterType<SqlDataTypeService>().AsImplementedInterfaces();
             builder.RegisterType<RetrieveDbObjectsService>().AsImplementedInterfaces();
             builder.RegisterType<GenerateTemplateService>().AsImplementedInterfaces();
-            builder.RegisterType<ClassTemplateService>().AsImplementedInterfaces();
-            builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();
+            //builder.RegisterType<ClassTemplateService>().AsSelf().AsImplementedInterfaces();
+            
+            //builder.RegisterGeneric(typeof(ClassTemplateService)).As(typeof(ITemplate<>));
+            //builder.RegisterGeneric(typeof(PropertiesTemplateSevice)).As(typeof(ITemplate<>));
+
+            //Register Domian Models
+            builder.RegisterType<SysObjects>();
+            builder.RegisterType<SysColumns>();
+
+            builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();//.As<ITemplate<SysColumns>>();
+
+            //builder.RegisterType<ITemplate<ClassTemplateService>>();
+            //builder.RegisterType<ITemplate<PropertiesTemplateSevice>>();
 
             //Register Repositories
             builder.RegisterType<RetrieveSqlDbObjectsRepository>().AsImplementedInterfaces();

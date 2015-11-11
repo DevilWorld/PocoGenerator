@@ -18,6 +18,7 @@ using PocoGenerator.Common.ExtensionMethods;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.DTO;
 using System.IO;
+using PocoGenerator.Domain.Services.Templates;
 
 namespace PocoGenerator
 {
@@ -38,8 +39,8 @@ namespace PocoGenerator
             //Test
             using (var scope = Global.Container.BeginLifetimeScope())
             {
-                var templateService = scope.Resolve<IGenerateObjectFromTemplate>();
-                templateService.Generate(ObjectTemplate.Class, new SysObjects());
+                var templateService = scope.Resolve<IGenerateObjectFromTemplate<GenerateTemplateService>>();
+                templateService.GetTemplateObject(ObjectTemplate.Class);
             }
             //Endof test
 

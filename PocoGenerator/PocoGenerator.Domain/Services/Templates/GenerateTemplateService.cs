@@ -8,10 +8,11 @@ using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.DotLiquidDrops;
+using PocoGenerator.Common;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
-    public class GenerateTemplateService : IGenerateObjectFromTemplate<>
+    public class GenerateTemplateService : IGenerateObjectFromTemplate<GenerateTemplateService>
     {
         private readonly ITemplate<ClassTemplateService> _template;
 
@@ -20,16 +21,34 @@ namespace PocoGenerator.Domain.Services.Templates
             _template = template;
         }
 
-        public string Generate(ObjectTemplate objectType, SysObjects sysobjects)
+        public void GetTemplateObject(ObjectTemplate templateType)
         {
-            if (objectType == ObjectTemplate.Class)
+            switch (templateType)
             {
-                Template templateClass = _template.GetTemplate();
+                case ObjectTemplate.Class:
+                    {
+                        var template = Global.ParsedTemplates[ObjectTemplate.Class];
+                        var result = template.Render(Hash.FromAnonymousObject(new { sysobjects = new SysObjectsDrop(new SysObjects() { name = "tblAddress" }) }));
+                        break;
+                    }
+                default:
+                    {
+                        var template = Global.ParsedTemplates[ObjectTemplate.Class];
+                        break;                        
+                    }
+            }            
+        }
 
-                var result = templateClass.Render(
-                    Hash.FromAnonymousObject(
-                        new {sysobjects = new SysObjectsDrop(sysobjects)}));
-            }
+        public string Generate(ITemplate<GenerateTemplateService> template, SysObjects sysobject)
+        {
+            //if (objectType == ObjectTemplate.Class)
+            //{
+            //    Template templateClass = _template.GetTemplate();
+
+            //    var result = templateClass.Render(
+            //        Hash.FromAnonymousObject(
+            //            new { sysobjects = new SysObjectsDrop(sysobjects) }));
+            //}
 
             return string.Empty;
         }
