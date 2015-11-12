@@ -12,7 +12,8 @@ using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Common.ExtensionMethods;
 using PocoGenerator.Domain.Models;
-using PocoGenerator.Domain.Models.DTO;
+using PocoGenerator.Domain.Models.BaseObjects;
+using PocoGenerator.Domain.Models.Dto;
 
 namespace PocoGenerator
 {

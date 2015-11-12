@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PocoGenerator.Domain.Models
+namespace PocoGenerator.Domain.Models.BaseObjects
 {
     public class KeyColumnNames
     {

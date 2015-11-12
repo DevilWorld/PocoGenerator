@@ -7,7 +7,7 @@ using Autofac;
 using DotLiquid;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces.Templates;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Services.Templates;
 using PocoGenerator.Domain.Models.Enums;
 

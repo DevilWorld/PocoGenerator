@@ -11,6 +11,7 @@ using PocoGenerator.Domain.Interfaces;
 using Autofac.Core;
 using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Models.Enums;
 
 namespace PocoGenerator

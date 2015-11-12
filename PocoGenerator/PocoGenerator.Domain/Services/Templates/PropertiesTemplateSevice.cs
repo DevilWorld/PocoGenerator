@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DotLiquid;
 using PocoGenerator.Domain.Interfaces.Templates;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.Services.Templates
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PocoGenerator.Domain.Models.Enums;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.Interfaces.Templates
 {

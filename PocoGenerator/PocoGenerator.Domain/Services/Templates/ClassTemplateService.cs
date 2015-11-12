@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces.Templates;
 using DotLiquid;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -24,8 +24,8 @@ namespace PocoGenerator.Domain.Services.Templates
             sbTemplate.Append("public class {{table.name}}");
             sbTemplate.AppendLine();
             sbTemplate.Append("{");
-            sbTemplate.AppendLine();            
-            sbTemplate.Append("{{columns}}");            
+            sbTemplate.AppendLine();
+            sbTemplate.Append("{{columns}}");
             sbTemplate.Append("}");
 
             return Template.Parse(sbTemplate.ToString());

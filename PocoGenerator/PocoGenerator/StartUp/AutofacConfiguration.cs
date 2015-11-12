@@ -8,7 +8,7 @@ using PocoGenerator.TypeMapping;
 using PocoGenerator.Infrastructure.Data.Repositories;
 using PocoGenerator.Infrastructure;
 using PocoGenerator.Domain.Interfaces.Templates;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.StartUp
 {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.Dto;
 using PocoGenerator.Infrastructure.Data.Repositories;
-using PocoGenerator.Domain.Models.DTO;
 
 namespace PocoGenerator.Infrastructure.Data.Repositories
 {
@@ -71,7 +71,7 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
                              Columns = obj.Columns
                          }).ToList();
 
-            return views;            
+            return views;
         }
 
         private void SetConnectionStringForDbToBeConnected()

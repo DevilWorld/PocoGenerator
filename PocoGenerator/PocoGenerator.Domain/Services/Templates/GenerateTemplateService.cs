@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using DotLiquid;
 using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.Enums;
-using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Common;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -88,7 +88,7 @@ namespace PocoGenerator.Domain.Services.Templates
                     sbProperty.Append( template.Render(Hash.FromAnonymousObject(new
                     {
                         column = new SysColumnsDrop(x)          //template in propertiestemplateservice
-                    })));                    
+                    })));
                 });
 
             return sbProperty.ToString();

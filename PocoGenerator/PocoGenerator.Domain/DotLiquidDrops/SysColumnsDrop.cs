@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PocoGenerator.Domain.Models;
 using DotLiquid;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.DotLiquidDrops
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using PocoGenerator.Domain.Interfaces;
 using System.Threading.Tasks;
-using PocoGenerator.Domain.Models;
+using PocoGenerator.Domain.Models.Dto;
 
 namespace PocoGenerator.Domain.Services
 {

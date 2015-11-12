@@ -41,17 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseObjects\SysTypes.cs" />
     <Compile Include="ConnectionStringProperties.cs" />
     <Compile Include="DatabaseName.cs" />
-    <Compile Include="DataTypeDto.cs" />
-    <Compile Include="DTO\TablesWithColumnsDto.cs" />
+    <Compile Include="Dto\DataTypeDto.cs" />
+    <Compile Include="Dto\TablesWithColumnsDto.cs" />
     <Compile Include="Enums\AuthenticationTypes.cs" />
     <Compile Include="Enums\DbObjects.cs" />
     <Compile Include="Enums\TemplateType.cs" />
-    <Compile Include="KeyColumnNames.cs" />
+    <Compile Include="BaseObjects\KeyColumnNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SysColumns.cs" />
-    <Compile Include="SysObjects.cs" />
+    <Compile Include="BaseObjects\SysColumns.cs" />
+    <Compile Include="BaseObjects\SysObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
