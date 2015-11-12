@@ -18,6 +18,7 @@ namespace PocoGenerator.Domain.DotLiquidDrops
         #region Properties
 
         public string Name => _sysObjects.name;
+        public IList<SysColumns> Columns => _sysObjects.Columns;
 
         #endregion
     }

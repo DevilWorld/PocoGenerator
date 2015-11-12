@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PocoGenerator.DatabaseConnection;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Interfaces.Templates;
-using PocoGenerator.Domain.Services;
 using Autofac;
-using PocoGenerator.StartUp;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Common.ExtensionMethods;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.DTO;
-using System.IO;
-using PocoGenerator.Domain.Services.Templates;
 
 namespace PocoGenerator
 {
@@ -40,7 +34,13 @@ namespace PocoGenerator
             using (var scope = Global.Container.BeginLifetimeScope())
             {
                 var templateService = scope.Resolve<IGenerateTemplate>();
-                templateService.Generate(TemplateType.Class, new SysObjects() {name = "tblAddress"});
+                templateService.Generate(TemplateType.Class, new SysObjects() {name = "tblAddress",
+                                            Columns = new List<SysColumns>
+                                            {
+                                                new SysColumns() { id=1, name="FirstName", colorder=1},
+                                                new SysColumns() { id=1, name="LastName", colorder=2},
+                                            }
+                });
             }
             //Endof test
 

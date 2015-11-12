@@ -50,7 +50,13 @@ namespace PocoGenerator.Domain.Services.Templates
                             var template = Global.TemplateManager[TemplateType.Class];
                             var result =
                                 template.Render(
-                                    Hash.FromAnonymousObject(new {@class = new SysObjectsDrop(sysObjects)}));
+                                    Hash.FromAnonymousObject(new
+                                    {
+                                        table = new SysObjectsDrop(sysObjects),
+                                        columns = GetProperties(sysObjects) // get the completely generated properties
+                                    }
+                                                            )
+                                                );
 
                             return result;
                         }
@@ -64,6 +70,28 @@ namespace PocoGenerator.Domain.Services.Templates
             }
 
             return string.Empty;
+        }
+
+        /// <summary>
+        /// Loop thru the columns and generatet rhe properties
+        /// </summary>
+        /// <param name="sysColumns"></param>
+        /// <returns></returns>
+        private string GetProperties(SysObjects sysObjects)
+        {
+            var template = Global.TemplateManager[TemplateType.Properties];
+
+            var sbProperty = new StringBuilder();
+
+            sysObjects.Columns.ToList().ForEach(x =>
+                {
+                    sbProperty.Append( template.Render(Hash.FromAnonymousObject(new
+                    {
+                        column = new SysColumnsDrop(x)          //template in propertiestemplateservice
+                    })));                    
+                });
+
+            return sbProperty.ToString();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace PocoGenerator.Domain.Services.Templates
         {
             StringBuilder sbTemplate = new StringBuilder();
             sbTemplate.Append("\t");
+            sbTemplate.Append("public {{column.name}} {{column.name}}");
             sbTemplate.AppendLine();
 
             return Template.Parse(sbTemplate.ToString());

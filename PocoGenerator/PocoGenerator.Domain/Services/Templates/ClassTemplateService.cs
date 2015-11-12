@@ -21,13 +21,11 @@ namespace PocoGenerator.Domain.Services.Templates
         public Template GetTemplate()
         {
             StringBuilder sbTemplate = new StringBuilder();
-            sbTemplate.Append("public class {{class.name}}"); //sysobjects.Name
+            sbTemplate.Append("public class {{table.name}}");
             sbTemplate.AppendLine();
             sbTemplate.Append("{");
-            sbTemplate.AppendLine();
-            sbTemplate.Append("\t");
-            sbTemplate.Append(_propertiesTemplateService.GetTemplate());
-            sbTemplate.AppendLine();
+            sbTemplate.AppendLine();            
+            sbTemplate.Append("{{columns}}");            
             sbTemplate.Append("}");
 
             return Template.Parse(sbTemplate.ToString());
