@@ -7,7 +7,7 @@ using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.DotLiquidDrops
 {
-    internal class SysObjectsDrop : Drop
+    public class SysObjectsDrop : Drop
     {
         private readonly SysObjects _sysObjects;
 

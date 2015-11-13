@@ -9,16 +9,18 @@ using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.BaseObjects;
+using PocoGenerator.Domain.Interfaces;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
     public class GenerateTemplateService : IGenerateTemplate
     {
         //private readonly ITemplate<SysObjects> _template;
+        
 
         public GenerateTemplateService(/*ITemplate<SysObjects> template*/)
         {
-            //_template = template;
+            //_template = template;            
         }
 
         //public void GetTemplateObject(TemplateType templateType)
@@ -43,6 +45,11 @@ namespace PocoGenerator.Domain.Services.Templates
         {
             switch (templateType)
             {
+                case TemplateType.Namespace:
+                    {
+                        break;
+                    }
+
                 case TemplateType.Class:
                     {
                         if (sysObjects != null)

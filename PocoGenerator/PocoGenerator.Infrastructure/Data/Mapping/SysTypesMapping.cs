@@ -8,20 +8,19 @@ using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Infrastructure.Data.Mapping
 {
-    public class SysColumnsMapping : EntityTypeConfiguration<SysColumns>
+    public class SysTypesMapping : EntityTypeConfiguration<SysTypes>
     {
-        public SysColumnsMapping()
+        public SysTypesMapping()
         {
-            ToTable("sys.syscolumns");
+            //Table configuration
+            ToTable("sys.systypes");
+
+            //Primary key configuration
             HasKey(pk => pk.name);
 
-            Property(p => p.id).HasColumnName("id").HasColumnType("int");
+            //Property-column mapping
             Property(p => p.name).HasColumnName("name").HasColumnType("nvarchar");
-            Property(p => p.colorder).HasColumnName("colorder").HasColumnType("int");
-
-            //Relations
-            HasRequired(c => c.DataType)
-                .WithRequiredDependent();
+            Property(p => p.xtype).HasColumnName("xtype").HasColumnType("tinyint");            
         }
     }
 }

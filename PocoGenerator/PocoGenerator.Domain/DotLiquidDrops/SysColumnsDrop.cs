@@ -4,18 +4,22 @@ using System.Linq;
 using PocoGenerator.Domain.Models;
 using DotLiquid;
 using PocoGenerator.Domain.Models.BaseObjects;
+using PocoGenerator.Common;
 
 namespace PocoGenerator.Domain.DotLiquidDrops
 {
-    internal class SysColumnsDrop : Drop
+    public class SysColumnsDrop : Drop
     {
-        private readonly SysColumns _sysColumns;
+        private readonly SysColumns _sysColumns;       
 
         public SysColumnsDrop(SysColumns sysColumns)
         {
-            _sysColumns = sysColumns;
+            _sysColumns = sysColumns;            
         }
 
         public string name => _sysColumns.name;
+        //public string datatype => Global.DataTypeMapper[_sysColumns.DataType.name];
+        public string datatype => _sysColumns.DataType.name;        //comment this and uncomment the above line. Above line works, if 
+        //it works in the correct flow. For test object, it does not work.
     }
 }

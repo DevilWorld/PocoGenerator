@@ -7,7 +7,7 @@ using PocoGenerator.Common;
 using PocoGenerator.TypeMapping;
 using PocoGenerator.Infrastructure.Data.Repositories;
 using PocoGenerator.Infrastructure;
-using PocoGenerator.Domain.Interfaces.Templates;
+using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.StartUp
@@ -30,6 +30,8 @@ namespace PocoGenerator.StartUp
             //Register Domian Models
             builder.RegisterType<SysObjects>();
             builder.RegisterType<SysColumns>();
+
+            builder.RegisterType<SysColumnsDrop>();
 
             builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();
             builder.RegisterType<ClassTemplateService>().AsImplementedInterfaces();

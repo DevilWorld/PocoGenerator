@@ -26,12 +26,14 @@ namespace PocoGenerator.Infrastructure
         public DbSet<SysObjects> SysObjects { get; set; }
         public DbSet<SysColumns> SysColumns { get; set; }
         public DbSet<KeyColumnNames> KeyColumnNames { get; set; }
+        public DbSet<SysTypes> SysTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new SysObjectsMapping());
             modelBuilder.Configurations.Add(new SysColumnsMapping());
             modelBuilder.Configurations.Add(new KeyColumnNamesMapping());
+            modelBuilder.Configurations.Add(new SysTypesMapping());
         }
     }
 }

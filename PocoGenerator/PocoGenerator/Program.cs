@@ -40,8 +40,8 @@ namespace PocoGenerator
                     name = "tblAddress",
                     Columns = new List<SysColumns>
                                             {
-                                                new SysColumns() { id=1, name="FirstName", colorder=1},
-                                                new SysColumns() { id=1, name="LastName", colorder=2},
+                                                new SysColumns() { id=1, name="FirstName", colorder=1, DataType = new SysTypes() { name = "nvarchar"} },
+                                                new SysColumns() { id=1, name="LastName", colorder=2, DataType = new SysTypes() { name = "nvarchar"}},
                                             }
                 });
             }

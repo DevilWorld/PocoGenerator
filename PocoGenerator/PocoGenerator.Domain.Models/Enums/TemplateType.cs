@@ -2,6 +2,7 @@
 {
     public enum TemplateType
     {
+        Namespace,
         Class,
         Properties,
         DbContext,
