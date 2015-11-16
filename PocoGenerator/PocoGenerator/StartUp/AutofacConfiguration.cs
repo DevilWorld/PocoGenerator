@@ -35,6 +35,7 @@ namespace PocoGenerator.StartUp
 
             builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();
             builder.RegisterType<ClassTemplateService>().AsImplementedInterfaces();
+            builder.RegisterType<NamespaceTemplateService>().AsImplementedInterfaces();
 
             //builder.RegisterType<ITemplate<ClassTemplateService>>();
             //builder.RegisterType<ITemplate<PropertiesTemplateSevice>>();

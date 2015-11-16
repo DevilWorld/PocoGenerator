@@ -21,8 +21,9 @@ namespace PocoGenerator.StartUp
             {
                 Dictionary<TemplateType, Template> parsedTemplates = new Dictionary<TemplateType, Template>
                 {
-                    { TemplateType.Class, scope.Resolve<ITemplate<SysObjects>>().GetTemplate() },
-                    { TemplateType.Properties, scope.Resolve<ITemplate<SysColumns>>().GetTemplate() }
+                    { TemplateType.Class, scope.Resolve<ITemplate<SysObjects, ClassTemplateService>>().GetTemplate() },
+                    { TemplateType.Properties, scope.Resolve<ITemplate<SysColumns, PropertiesTemplateSevice>>().GetTemplate() },
+                    { TemplateType.Namespace, scope.Resolve<ITemplate<SysObjects, NamespaceTemplateService>>().GetTemplate() }
                 };
 
                 Global.TemplateManager = parsedTemplates;

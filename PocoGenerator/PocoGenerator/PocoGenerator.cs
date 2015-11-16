@@ -23,26 +23,28 @@ namespace PocoGenerator
 
         //private readonly IDataTypeService _dataTypeService;
         private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;
+        private readonly IGenerateTemplate _generateTemplate;
 
-        public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/)
+        public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/, IGenerateTemplate generateTemplate)
         {
             InitializeComponent();
 
             //_dataTypeService = dataTypeService;
             _retrieveDbObjectsService = retrieveDbObjectsService;
+            _generateTemplate = generateTemplate;
 
             //Test
-            using (var scope = Global.Container.BeginLifetimeScope())
-            {
-                var templateService = scope.Resolve<IGenerateTemplate>();
-                templateService.Generate(TemplateType.Class, new SysObjects() {name = "tblAddress",
-                                            Columns = new List<SysColumns>
-                                            {
-                                                new SysColumns() { id=1, name="FirstName", colorder=1},
-                                                new SysColumns() { id=1, name="LastName", colorder=2},
-                                            }
-                });
-            }
+            //using (var scope = Global.Container.BeginLifetimeScope())
+            //{
+            //    var templateService = scope.Resolve<IGenerateTemplate>();
+            //    templateService.Generate(TemplateType.Class, new SysObjects() {name = "tblAddress",
+            //                                Columns = new List<SysColumns>
+            //                                {
+            //                                    new SysColumns() { id=1, name="FirstName", colorder=1},
+            //                                    new SysColumns() { id=1, name="LastName", colorder=2},
+            //                                }
+            //    });
+            //}
             //Endof test
 
             DisplayConnectToDatabase();
@@ -95,6 +97,7 @@ namespace PocoGenerator
 
                         node.ImageIndex = 0;
                         node.SelectedImageIndex = 1;
+                        node.Tag = x;
 
                         return node;
 
@@ -190,6 +193,9 @@ namespace PocoGenerator
             }
 
             tvDatabase.AfterCheck += tvDatabase_AfterCheck;
+
+            //Write code to generate template
+            var result = _generateTemplate.Generate(TemplateType.Class);
         }
 
         /// <summary>

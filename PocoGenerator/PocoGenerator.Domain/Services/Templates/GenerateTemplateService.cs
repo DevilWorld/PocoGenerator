@@ -47,6 +47,19 @@ namespace PocoGenerator.Domain.Services.Templates
             {
                 case TemplateType.Namespace:
                     {
+                        if (sysObjects != null)
+                        {
+                            var template = Global.TemplateManager[TemplateType.Namespace];
+                            var result =
+                                    template.Render(
+                                    Hash.FromAnonymousObject(new
+                                    {
+                                        @class = GetClass(sysObjects)
+                                    }));
+
+                            return result;
+                        }
+
                         break;
                     }
 
@@ -54,18 +67,7 @@ namespace PocoGenerator.Domain.Services.Templates
                     {
                         if (sysObjects != null)
                         {
-                            var template = Global.TemplateManager[TemplateType.Class];
-                            var result =
-                                template.Render(
-                                    Hash.FromAnonymousObject(new
-                                    {
-                                        table = new SysObjectsDrop(sysObjects),
-                                        columns = GetProperties(sysObjects) // get the completely generated properties
-                                    }
-                                                            )
-                                                );
-
-                            return result;
+                            return GetClass(sysObjects);
                         }
                         break;
                     }
@@ -77,6 +79,22 @@ namespace PocoGenerator.Domain.Services.Templates
             }
 
             return string.Empty;
+        }
+
+        private string GetClass(SysObjects sysObjects)
+        {
+            var template = Global.TemplateManager[TemplateType.Class];
+            var result =
+                template.Render(
+                    Hash.FromAnonymousObject(new
+                    {
+                        table = new SysObjectsDrop(sysObjects),
+                        columns = GetProperties(sysObjects) // get the completely generated properties
+                                    }
+                                            )
+                                );
+
+            return result;
         }
 
         /// <summary>

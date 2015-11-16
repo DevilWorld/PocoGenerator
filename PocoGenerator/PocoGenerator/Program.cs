@@ -32,19 +32,19 @@ namespace PocoGenerator
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Test
-            using (var scope = Global.Container.BeginLifetimeScope())
-            {
-                var templateService = scope.Resolve<IGenerateTemplate>();
-                templateService.Generate(TemplateType.Class, new SysObjects()
-                {
-                    name = "tblAddress",
-                    Columns = new List<SysColumns>
-                                            {
-                                                new SysColumns() { id=1, name="FirstName", colorder=1, DataType = new SysTypes() { name = "nvarchar"} },
-                                                new SysColumns() { id=1, name="LastName", colorder=2, DataType = new SysTypes() { name = "nvarchar"}},
-                                            }
-                });
-            }
+            //using (var scope = Global.Container.BeginLifetimeScope())
+            //{
+            //    var templateService = scope.Resolve<IGenerateTemplate>();
+            //    var result = templateService.Generate(TemplateType.Namespace, new SysObjects()
+            //    {
+            //        name = "tblAddress",
+            //        Columns = new List<SysColumns>
+            //                                {
+            //                                    new SysColumns() { id=1, name="FirstName", colorder=1, DataType = new SysTypes() { name = "nvarchar"} },
+            //                                    new SysColumns() { id=1, name="LastName", colorder=2, DataType = new SysTypes() { name = "nvarchar"}},
+            //                                }
+            //    });
+            //}
             //Endof test
 
             using (var scope = Global.Container.BeginLifetimeScope())

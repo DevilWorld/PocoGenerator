@@ -8,7 +8,7 @@ using PocoGenerator.Domain.Models;
 
 namespace PocoGenerator.Domain.Interfaces.Templates
 {
-    public interface ITemplate<T> where T : class
+    public interface ITemplate<T, TU> where T : class where TU :class
     {
         //Retrieves template at all levels of the object
         Template GetTemplate();

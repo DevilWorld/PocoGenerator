@@ -18,10 +18,11 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
             Property(p => p.id).HasColumnName("id").HasColumnType("int");
             Property(p => p.name).HasColumnName("name").HasColumnType("nvarchar");
             Property(p => p.colorder).HasColumnName("colorder").HasColumnType("int");
+            Property(p => p.xtype).HasColumnName("xtype").HasColumnType("tinyint");
 
             //Relations
             HasRequired(c => c.DataType)
-                .WithRequiredDependent();
+                .WithRequiredPrincipal();
         }
     }
 }

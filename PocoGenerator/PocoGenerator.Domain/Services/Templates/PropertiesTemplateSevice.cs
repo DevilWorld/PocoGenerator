@@ -9,7 +9,7 @@ using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
-    public class PropertiesTemplateSevice : ITemplate<SysColumns>
+    public class PropertiesTemplateSevice : ITemplate<SysColumns, PropertiesTemplateSevice>
     {
         public PropertiesTemplateSevice()
         { }

@@ -62,6 +62,7 @@
     <Compile Include="Services\SqlDataTypeService.cs" />
     <Compile Include="Services\SQLServerDBConnectService.cs" />
     <Compile Include="Services\Templates\ClassTemplateService.cs" />
+    <Compile Include="Services\Templates\NamespaceTemplateService.cs" />
     <Compile Include="Services\Templates\PropertiesTemplateSevice.cs" />
   </ItemGroup>
   <ItemGroup>
