@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DotLiquidDrops\SysColumnsDrop.cs" />
-    <Compile Include="DotLiquidDrops\SysObjectsDrop.cs" />
+    <Compile Include="DotLiquidDrops\TableWithColumnsDrop.cs" />
     <Compile Include="Interfaces\IConnectionStringService.cs" />
     <Compile Include="Interfaces\IDataTypeService.cs" />
     <Compile Include="Interfaces\IDbConnectService.cs" />

@@ -7,11 +7,11 @@ using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Domain.DotLiquidDrops
 {
-    public class SysObjectsDrop : Drop
+    public class TableWithColumnsDrop : Drop
     {
         private readonly SysObjects _sysObjects;
 
-        public SysObjectsDrop(SysObjects sysObjects)
+        public TableWithColumnsDrop(SysObjects sysObjects)
         {
             _sysObjects = sysObjects;
         }

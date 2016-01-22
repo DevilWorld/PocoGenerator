@@ -10,6 +10,7 @@ using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Interfaces;
+using PocoGenerator.Domain.Models.Dto;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -41,20 +42,20 @@ namespace PocoGenerator.Domain.Services.Templates
         //    }
         //}
 
-        public string Generate(TemplateType templateType, SysObjects sysObjects = null, SysColumns sysColumns = null, KeyColumnNames keyColumnsNames = null)
+        public string Generate(TemplateType templateType, TablesWithColumnsDto tableWithColumns)
         {
             switch (templateType)
             {
                 case TemplateType.Namespace:
                     {
-                        if (sysObjects != null)
+                        if (tableWithColumns != null)
                         {
                             var template = Global.TemplateManager[TemplateType.Namespace];
                             var result =
                                     template.Render(
                                     Hash.FromAnonymousObject(new
                                     {
-                                        @class = GetClass(sysObjects)
+                                        @class = GetClass(tableWithColumns)
                                     }));
 
                             return result;
@@ -65,9 +66,9 @@ namespace PocoGenerator.Domain.Services.Templates
 
                 case TemplateType.Class:
                     {
-                        if (sysObjects != null)
+                        if (tableWithColumns != null)
                         {
-                            return GetClass(sysObjects);
+                            return GetClass(tableWithColumns);
                         }
                         break;
                     }
@@ -81,20 +82,22 @@ namespace PocoGenerator.Domain.Services.Templates
             return string.Empty;
         }
 
-        private string GetClass(SysObjects sysObjects)
+        private string GetClass(TablesWithColumnsDto tableWithColumns)
         {
             var template = Global.TemplateManager[TemplateType.Class];
-            var result =
-                template.Render(
-                    Hash.FromAnonymousObject(new
-                    {
-                        table = new SysObjectsDrop(sysObjects),
-                        columns = GetProperties(sysObjects) // get the completely generated properties
-                                    }
-                                            )
-                                );
+            //var result =
+            //    template.Render(
+            //        Hash.FromAnonymousObject(new
+            //        {
+            //            table = new TableWithColumnsDrop(sysObjects),   //use automapper to tablewithColumns to sysobjects
+            //            columns = GetProperties(sysObjects) // get the completely generated properties
+            //        }
+            //                                )
+            //                    );
 
             return result;
+
+            return string.Empty;
         }
 
         /// <summary>

@@ -25,6 +25,8 @@ namespace PocoGenerator
         private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;
         private readonly IGenerateTemplate _generateTemplate;
 
+        ImageList imgList;
+
         public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/, IGenerateTemplate generateTemplate)
         {
             InitializeComponent();
@@ -76,7 +78,9 @@ namespace PocoGenerator
         {
             foreach (DbObjectTypes dbObjectType in Enum.GetValues(typeof(DbObjectTypes)))
             {
-                TreeNode node = new TreeNode(" " + dbObjectType.GetDbObjectTypesDescription(), GetChildNodes(dbObjectType));
+                TreeNode node = new TreeNode(" " + dbObjectType.GetDbObjectTypesDescription(), 1, 1, GetChildNodes(dbObjectType));
+
+                //node.ImageIndex = 1;
 
                 tvDatabase.Nodes.Add(node);
             }
@@ -93,10 +97,16 @@ namespace PocoGenerator
                     return GetTables().ToList().Select(x =>
                     {
                         var node = new TreeNode(" " + x.Name,
-                                        x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray());
+                                        x.Columns.ToList().Select(y =>
+                                        {
+                                            var columnNode = new TreeNode(y.name);
+                                            columnNode.ImageIndex = 3;
 
-                        node.ImageIndex = 0;
-                        node.SelectedImageIndex = 1;
+                                            return columnNode;
+                                        }).ToArray());
+
+                        node.ImageIndex = 3;
+                        node.SelectedImageIndex = 3;
                         node.Tag = x;
 
                         return node;
@@ -120,15 +130,21 @@ namespace PocoGenerator
 
         private void AssignImagesToTreeView()
         {
-            ImageList imgList = new ImageList();
+            //ImageList imgList = new ImageList();
+            imgList = new ImageList();
 
             var path = System.IO.Directory.GetCurrentDirectory();
 
             imgList.Images.Add(Image.FromFile(path + @"\Images\database.jpg"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\folder.jpg"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\table.png"));
+            imgList.Images.Add(Image.FromFile(path + @"\Images\folder.png"));
+            imgList.Images.Add(Image.FromFile(path + @"\Images\folder_open.png"));
+            imgList.Images.Add(Image.FromFile(path + @"\Images\table1.png"));
+            imgList.Images.Add(Image.FromFile(path + @"\Images\columns.png"));
+
+            //imgList.ImageSize = new Size(16, 16);
 
             tvDatabase.ImageList = imgList;
+            
         }
 
         private IEnumerable<TablesWithColumnsDto> GetTables()
@@ -195,7 +211,7 @@ namespace PocoGenerator
             tvDatabase.AfterCheck += tvDatabase_AfterCheck;
 
             //Write code to generate template
-            var result = _generateTemplate.Generate(TemplateType.Class);
+            var result = _generateTemplate.Generate(TemplateType.Class, (TablesWithColumnsDto)e.Node.Tag);
         }
 
         /// <summary>
@@ -264,12 +280,16 @@ namespace PocoGenerator
                 using (SolidBrush brush = new SolidBrush(backColor))
                 {
                     e.Graphics.FillRectangle(brush, e.Node.Bounds);
+
+                    e.Graphics.DrawImage(imgList.Images[4], e.Bounds.Right + 75, e.Bounds.Top);
                 }
                 TextRenderer.DrawText(e.Graphics, e.Node.Text, tvDatabase.Font, e.Node.Bounds, foreColor, backColor);
                 if ((e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused)
                 {
                     ControlPaint.DrawFocusRectangle(e.Graphics, e.Node.Bounds, foreColor, backColor);
                 }
+                
+
                 e.DrawDefault = false;
             }
             else
