@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using DotLiquid;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Services.Templates;
@@ -15,7 +15,7 @@ namespace PocoGenerator.StartUp
 {
     internal class DotLiquidConfiguration
     {
-        public static void Configue()
+        internal static void Configure()
         {
             using (var scope = Global.Container.BeginLifetimeScope())
             {

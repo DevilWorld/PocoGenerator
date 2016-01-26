@@ -8,7 +8,7 @@ using DotLiquid;
 using PocoGenerator.Domain.Models.Enums;
 
 
-namespace PocoGenerator.Common
+namespace PocoGenerator.Domain
 {
     public static class Global
     {
@@ -20,5 +20,7 @@ namespace PocoGenerator.Common
         public static IDictionary<string, string> DataTypeMapper { get; set; }
 
         public static IDictionary<TemplateType, Template> TemplateManager { get; set; }
+
+        public static bool IsNameSpaceEnabled{ get; set; }
     }
 }

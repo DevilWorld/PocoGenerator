@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PocoGenerator.Domain.Models.Enums;
 
-namespace PocoGenerator.Common.ExtensionMethods
+namespace PocoGenerator.Domain.ExtensionMethods
 {
     public static partial class ExtensionMethods
     {

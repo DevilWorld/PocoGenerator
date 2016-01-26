@@ -11,6 +11,6 @@ namespace PocoGenerator.Domain.Models.BaseObjects
         public string name { get; set; }
         public byte xtype { get; set; }
 
-        public virtual SysColumns Column { get; set; }
+        public virtual IList<SysColumns> Columns { get; set; }
     }
 }

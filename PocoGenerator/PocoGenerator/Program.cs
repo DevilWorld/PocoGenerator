@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PocoGenerator.StartUp;
 using Autofac;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 using PocoGenerator.TypeMapping;
 using PocoGenerator.Domain.Interfaces;
 using Autofac.Core;
@@ -26,7 +26,9 @@ namespace PocoGenerator
         {
             //Configurations
             AutofacConfiguration.Configure();
-            DotLiquidConfiguration.Configue();
+            Global.IsNameSpaceEnabled = true;
+            DotLiquidConfiguration.Configure();
+            AutoMapperConfiguration.Configure();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

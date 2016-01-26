@@ -28,56 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PocoGenerator));
             this.pnlBody = new System.Windows.Forms.Panel();
             this.scBody = new System.Windows.Forms.SplitContainer();
             this.tvDatabase = new System.Windows.Forms.TreeView();
-            this.menuStrip1.SuspendLayout();
+            this.pnlMenuBar = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.pnlSettings = new System.Windows.Forms.Panel();
+            this.lblNamespace = new System.Windows.Forms.Label();
+            this.txtNamespace = new System.Windows.Forms.TextBox();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
+            this.scBody.Panel2.SuspendLayout();
             this.scBody.SuspendLayout();
+            this.pnlMenuBar.SuspendLayout();
+            this.pnlSettings.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripComboBox1,
-            this.toolStripMenuItem2,
-            this.toolStripTextBox1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1282, 32);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Enabled = false;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(78, 28);
-            this.toolStripMenuItem1.Text = "DB Filter";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 28);
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 28);
             // 
             // pnlBody
             // 
@@ -90,18 +58,28 @@
             // scBody
             // 
             this.scBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scBody.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scBody.Location = new System.Drawing.Point(0, 0);
             this.scBody.Name = "scBody";
             // 
             // scBody.Panel1
             // 
+            this.scBody.Panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.scBody.Panel1.Controls.Add(this.tvDatabase);
+            this.scBody.Panel1MinSize = 300;
+            // 
+            // scBody.Panel2
+            // 
+            this.scBody.Panel2.Controls.Add(this.txtOutput);
+            this.scBody.Panel2.Controls.Add(this.pnlSettings);
             this.scBody.Size = new System.Drawing.Size(1282, 818);
-            this.scBody.SplitterDistance = 427;
+            this.scBody.SplitterDistance = 320;
+            this.scBody.SplitterWidth = 1;
             this.scBody.TabIndex = 0;
             // 
             // tvDatabase
             // 
+            this.tvDatabase.BackColor = System.Drawing.SystemColors.Window;
             this.tvDatabase.CheckBoxes = true;
             this.tvDatabase.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.tvDatabase.Location = new System.Drawing.Point(0, 0);
@@ -111,42 +89,96 @@
             this.tvDatabase.TabIndex = 0;
             this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);
             // 
+            // pnlMenuBar
+            // 
+            this.pnlMenuBar.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.pnlMenuBar.Controls.Add(this.btnSettings);
+            this.pnlMenuBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlMenuBar.Name = "pnlMenuBar";
+            this.pnlMenuBar.Size = new System.Drawing.Size(1282, 34);
+            this.pnlMenuBar.TabIndex = 1;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+            this.btnSettings.Location = new System.Drawing.Point(1247, 6);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(23, 23);
+            this.btnSettings.TabIndex = 0;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // pnlSettings
+            // 
+            this.pnlSettings.Controls.Add(this.txtNamespace);
+            this.pnlSettings.Controls.Add(this.lblNamespace);
+            this.pnlSettings.Location = new System.Drawing.Point(0, 0);
+            this.pnlSettings.Name = "pnlSettings";
+            this.pnlSettings.Size = new System.Drawing.Size(473, 160);
+            this.pnlSettings.TabIndex = 0;
+            // 
+            // lblNamespace
+            // 
+            this.lblNamespace.AutoSize = true;
+            this.lblNamespace.Location = new System.Drawing.Point(3, 11);
+            this.lblNamespace.Name = "lblNamespace";
+            this.lblNamespace.Size = new System.Drawing.Size(83, 17);
+            this.lblNamespace.TabIndex = 0;
+            this.lblNamespace.Text = "Namespace";
+            // 
+            // txtNamespace
+            // 
+            this.txtNamespace.Location = new System.Drawing.Point(92, 8);
+            this.txtNamespace.Name = "txtNamespace";
+            this.txtNamespace.Size = new System.Drawing.Size(369, 22);
+            this.txtNamespace.TabIndex = 1;
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(0, 157);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
+            this.txtOutput.Size = new System.Drawing.Size(938, 649);
+            this.txtOutput.TabIndex = 2;
+            // 
             // PocoGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1282, 853);
+            this.Controls.Add(this.pnlMenuBar);
             this.Controls.Add(this.pnlBody);
-            this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PocoGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Poco Generator";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.pnlBody.ResumeLayout(false);
             this.scBody.Panel1.ResumeLayout(false);
+            this.scBody.Panel2.ResumeLayout(false);
+            this.scBody.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).EndInit();
             this.scBody.ResumeLayout(false);
+            this.pnlMenuBar.ResumeLayout(false);
+            this.pnlSettings.ResumeLayout(false);
+            this.pnlSettings.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.SplitContainer scBody;
         private System.Windows.Forms.TreeView tvDatabase;
+        private System.Windows.Forms.Panel pnlMenuBar;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Panel pnlSettings;
+        private System.Windows.Forms.TextBox txtNamespace;
+        private System.Windows.Forms.Label lblNamespace;
+        private System.Windows.Forms.TextBox txtOutput;
     }
 }
 

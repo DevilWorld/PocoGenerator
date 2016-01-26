@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace PocoGenerator.Common.ExtensionMethods
+namespace PocoGenerator.Domain.ExtensionMethods
 {
     public static partial class ExtensionMethods
     {

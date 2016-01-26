@@ -12,6 +12,6 @@ namespace PocoGenerator.Domain.Models.Dto
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public IEnumerable<SysColumns> Columns { get; set; }
+        public IList<SysColumns> Columns { get; set; }
     }
 }

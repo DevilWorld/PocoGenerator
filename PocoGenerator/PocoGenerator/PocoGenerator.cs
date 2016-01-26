@@ -8,12 +8,13 @@ using PocoGenerator.DatabaseConnection;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Interfaces.Templates;
 using Autofac;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 using PocoGenerator.Domain.Models.Enums;
-using PocoGenerator.Common.ExtensionMethods;
+using PocoGenerator.Domain.ExtensionMethods;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Models.Dto;
+using PocoGenerator.StartUp;
 
 namespace PocoGenerator
 {
@@ -27,6 +28,8 @@ namespace PocoGenerator
 
         ImageList imgList;
 
+
+        //TODO On namespace enabled checkbox, reload the dot liquid templates. DotLiquidConfiguration.Configure();
         public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/, IGenerateTemplate generateTemplate)
         {
             InitializeComponent();
@@ -47,7 +50,7 @@ namespace PocoGenerator
             //                                }
             //    });
             //}
-            //Endof test
+            //Endof test            
 
             DisplayConnectToDatabase();
 
@@ -135,16 +138,29 @@ namespace PocoGenerator
 
             var path = System.IO.Directory.GetCurrentDirectory();
 
-            imgList.Images.Add(Image.FromFile(path + @"\Images\database.jpg"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\folder.png"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\folder_open.png"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\table1.png"));
-            imgList.Images.Add(Image.FromFile(path + @"\Images\columns.png"));
+            imgList.Images.Add("Database", Image.FromFile(path + @"\Images\database.jpg"));
+            imgList.Images.Add("Folder", Image.FromFile(path + @"\Images\folder.png"));
+            imgList.Images.Add("FolderOpen", Image.FromFile(path + @"\Images\folder_open.png"));
+            imgList.Images.Add("Table", Image.FromFile(path + @"\Images\table1.png"));
+            imgList.Images.Add("Columns", Image.FromFile(path + @"\Images\columns.png"));
 
             //imgList.ImageSize = new Size(16, 16);
 
-            tvDatabase.ImageList = imgList;
-            
+            //tvDatabase.ImageList = imgList;       uncomment this
+                        
+            Point destPt = new Point(6, 0);
+            Size size = new Size(22, 16);
+            tvDatabase.ImageList = new ImageList();
+            tvDatabase.ImageList.ImageSize = size;
+            foreach (String imgKey in imgList.Images.Keys)
+            {
+                Bitmap bmp = new Bitmap(size.Width, size.Height);
+                Graphics g = Graphics.FromImage(bmp);
+                g.DrawImage(imgList.Images[imgKey], destPt);
+                g.Dispose();
+                tvDatabase.ImageList.Images.Add(imgKey, (Image)bmp);
+            }
+
         }
 
         private IEnumerable<TablesWithColumnsDto> GetTables()
@@ -189,7 +205,7 @@ namespace PocoGenerator
             //nodes.Cast<TreeNode>().ToList().ForEach(x => x.Checked = blnCheckUncheck);
         }
 
-        private bool blnChild = false;
+        //private bool blnChild = false;
 
         private void tvDatabase_AfterCheck(object sender, TreeViewEventArgs e)
         {
@@ -211,7 +227,8 @@ namespace PocoGenerator
             tvDatabase.AfterCheck += tvDatabase_AfterCheck;
 
             //Write code to generate template
-            var result = _generateTemplate.Generate(TemplateType.Class, (TablesWithColumnsDto)e.Node.Tag);
+            RenderOutput((TablesWithColumnsDto)e.Node.Tag);
+                     
         }
 
         /// <summary>
@@ -288,7 +305,7 @@ namespace PocoGenerator
                 {
                     ControlPaint.DrawFocusRectangle(e.Graphics, e.Node.Bounds, foreColor, backColor);
                 }
-                
+
 
                 e.DrawDefault = false;
             }
@@ -300,6 +317,45 @@ namespace PocoGenerator
         private static bool IsThirdLevel(TreeNode node)
         {
             return node.Parent != null && node.Parent.Parent != null;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ContextMenu menu = new ContextMenu();
+
+            //NameSpace Enable Settings
+            var mnuNameSpace = new MenuItem() { Text = "Include NameSpace" };
+            mnuNameSpace.Click += mnuNameSpace_Click;
+            mnuNameSpace.Checked = Global.IsNameSpaceEnabled;
+            menu.MenuItems.Add(mnuNameSpace);
+
+            button.ContextMenu = menu;
+            button.ContextMenu.Show(btnSettings, new Point(-122, 18));
+        }
+
+        private void mnuNameSpace_Click(object sender, EventArgs e)
+        {
+            var menu = (MenuItem)sender;
+
+            if (menu == null)
+                return;
+
+            menu.Checked = !menu.Checked;
+            Global.IsNameSpaceEnabled = menu.Checked;
+
+            //Reload Templates for DotLiquid to Parse
+            DotLiquidConfiguration.Configure();
+        }
+
+        private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
+        {
+            var templateType = Global.IsNameSpaceEnabled ? TemplateType.Namespace : TemplateType.Class;
+
+            var result = _generateTemplate.Generate(templateType, tableWithColumnsDto);
+
+            //Write to textbox
+            txtOutput.Text = result;
         }
     }
 }

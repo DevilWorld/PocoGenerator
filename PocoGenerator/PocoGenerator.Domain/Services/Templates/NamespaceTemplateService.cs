@@ -25,8 +25,7 @@ namespace PocoGenerator.Domain.Services.Templates
             sbTemplate.Append("namespace ");
             sbTemplate.AppendLine();
             sbTemplate.Append("{");
-            sbTemplate.AppendLine();
-            //sbTemplate.Append("\t");
+            sbTemplate.AppendLine();            
             sbTemplate.Append("{{class}}");
             sbTemplate.AppendLine();
             sbTemplate.Append("}");

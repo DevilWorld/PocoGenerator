@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PocoGenerator.Domain.Models.Enums;
-using PocoGenerator.Common.ExtensionMethods;
+using PocoGenerator.Domain.ExtensionMethods;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 
 namespace PocoGenerator.DatabaseConnection
 {

@@ -3,18 +3,19 @@ using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Services;
 using PocoGenerator.Domain.Services.Templates;
 using PocoGenerator.DatabaseConnection;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 using PocoGenerator.TypeMapping;
 using PocoGenerator.Infrastructure.Data.Repositories;
 using PocoGenerator.Infrastructure;
 using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Domain.Models.BaseObjects;
+using PocoGenerator.Domain.Services.BlankSpace;
 
 namespace PocoGenerator.StartUp
 {
     internal static class AutofacConfiguration
     {
-        public static void Configure()
+        internal static void Configure()
         {
             //Create a container
             var builder = new ContainerBuilder();
@@ -36,6 +37,10 @@ namespace PocoGenerator.StartUp
             builder.RegisterType<PropertiesTemplateSevice>().AsImplementedInterfaces();
             builder.RegisterType<ClassTemplateService>().AsImplementedInterfaces();
             builder.RegisterType<NamespaceTemplateService>().AsImplementedInterfaces();
+
+            //Blank Space Configuration
+            builder.RegisterType<ClassBlankSpaceService>().AsImplementedInterfaces();
+            builder.RegisterType<PropertiesBlankSpaceService>().AsImplementedInterfaces();
 
             //builder.RegisterType<ITemplate<ClassTemplateService>>();
             //builder.RegisterType<ITemplate<PropertiesTemplateSevice>>();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using PocoGenerator.Common;
+//using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Infrastructure.Data.Mapping;

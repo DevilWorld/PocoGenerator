@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PocoGenerator.Domain.Interfaces;
-using PocoGenerator.Common;
+using PocoGenerator.Domain;
 
 namespace PocoGenerator.TypeMapping
 {

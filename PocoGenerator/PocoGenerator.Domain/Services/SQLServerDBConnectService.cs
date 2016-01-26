@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
 using System.Data.SqlClient;
-using PocoGenerator.Common;
+//using PocoGenerator.Common;
 
 
 

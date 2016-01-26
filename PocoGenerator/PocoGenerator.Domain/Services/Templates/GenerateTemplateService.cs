@@ -7,10 +7,11 @@ using DotLiquid;
 using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Domain.DotLiquidDrops;
-using PocoGenerator.Common;
+//using PocoGenerator.Common;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models.Dto;
+using PocoGenerator.Domain.ExtensionMethods;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -85,23 +86,23 @@ namespace PocoGenerator.Domain.Services.Templates
         private string GetClass(TablesWithColumnsDto tableWithColumns)
         {
             var template = Global.TemplateManager[TemplateType.Class];
-            //var result =
-            //    template.Render(
-            //        Hash.FromAnonymousObject(new
-            //        {
-            //            table = new TableWithColumnsDrop(sysObjects),   //use automapper to tablewithColumns to sysobjects
-            //            columns = GetProperties(sysObjects) // get the completely generated properties
-            //        }
-            //                                )
-            //                    );
+            var sysObjects = tableWithColumns.MapToModel<SysObjects>();
 
-            return result;
+            var result =
+                template.Render(
+                    Hash.FromAnonymousObject(new
+                    {
+                        table = new TableWithColumnsDrop(sysObjects),
+                        columns = GetProperties(sysObjects) 
+                    }
+                                            )
+                                );
 
-            return string.Empty;
+            return result;            
         }
 
         /// <summary>
-        /// Loop thru the columns and generatet rhe properties
+        /// Loop thru the columns and generate rhe properties
         /// </summary>
         /// <param name="sysColumns"></param>
         /// <returns></returns>

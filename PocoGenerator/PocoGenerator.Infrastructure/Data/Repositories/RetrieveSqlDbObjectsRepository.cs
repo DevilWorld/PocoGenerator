@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PocoGenerator.Common;
+//using PocoGenerator.Common;
 using PocoGenerator.Domain.Interfaces;
 using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.Dto;
 using PocoGenerator.Infrastructure.Data.Repositories;
+using PocoGenerator.Domain;
 
 namespace PocoGenerator.Infrastructure.Data.Repositories
 {

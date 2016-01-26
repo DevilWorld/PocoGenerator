@@ -59,10 +59,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\PocoGenerator.Common\PocoGenerator.Common.csproj">
-      <Project>{082d0cac-bfc6-464b-9023-f4b9e6cb1a69}</Project>
-      <Name>PocoGenerator.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PocoGenerator.Domain.Models\PocoGenerator.Domain.Models.csproj">
       <Project>{92042da6-4d20-44bf-880d-b947679377f4}</Project>
       <Name>PocoGenerator.Domain.Models</Name>

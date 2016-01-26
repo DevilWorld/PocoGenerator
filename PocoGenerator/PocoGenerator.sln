@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Windows Desktop
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoGenerator", "PocoGenerator\PocoGenerator.csproj", "{CD16ADD8-9838-4BD3-B9B0-05CA8C1F61DF}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoGenerator.Infrastructur
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoGenerator.Tests", "PocoGenerator.Tests\PocoGenerator.Tests.csproj", "{90167808-45D1-4BC3-BCCB-25D46C6977D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoGenerator.Common", "PocoGenerator.Common\PocoGenerator.Common.csproj", "{082D0CAC-BFC6-464B-9023-F4B9E6CB1A69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +50,6 @@ Global
 		{90167808-45D1-4BC3-BCCB-25D46C6977D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90167808-45D1-4BC3-BCCB-25D46C6977D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90167808-45D1-4BC3-BCCB-25D46C6977D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{082D0CAC-BFC6-464B-9023-F4B9E6CB1A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{082D0CAC-BFC6-464B-9023-F4B9E6CB1A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{082D0CAC-BFC6-464B-9023-F4B9E6CB1A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{082D0CAC-BFC6-464B-9023-F4B9E6CB1A69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
