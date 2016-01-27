@@ -133,20 +133,14 @@ namespace PocoGenerator
 
         private void AssignImagesToTreeView()
         {
-            //ImageList imgList = new ImageList();
-            imgList = new ImageList();
-
             var path = System.IO.Directory.GetCurrentDirectory();
+            imgList = new ImageList();            
 
             imgList.Images.Add("Database", Image.FromFile(path + @"\Images\database.jpg"));
             imgList.Images.Add("Folder", Image.FromFile(path + @"\Images\folder.png"));
             imgList.Images.Add("FolderOpen", Image.FromFile(path + @"\Images\folder_open.png"));
             imgList.Images.Add("Table", Image.FromFile(path + @"\Images\table1.png"));
             imgList.Images.Add("Columns", Image.FromFile(path + @"\Images\columns.png"));
-
-            //imgList.ImageSize = new Size(16, 16);
-
-            //tvDatabase.ImageList = imgList;       uncomment this
                         
             Point destPt = new Point(6, 0);
             Size size = new Size(22, 16);
@@ -226,8 +220,11 @@ namespace PocoGenerator
 
             tvDatabase.AfterCheck += tvDatabase_AfterCheck;
 
+            //Get the list of checked nodes and send to RenderOutput()
+            var checkedNodes = GetCheckedTreeNodes();
+
             //Write code to generate template
-            RenderOutput((TablesWithColumnsDto)e.Node.Tag);
+            RenderOutput(checkedNodes);
                      
         }
 
@@ -348,14 +345,35 @@ namespace PocoGenerator
             DotLiquidConfiguration.Configure();
         }
 
-        private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
+        private IEnumerable<TablesWithColumnsDto> GetCheckedTreeNodes()
+        {
+            //var nodes = tvDatabase.Nodes
+            //    .OfType<TreeNode>()
+            //    .SelectMany(x => new[] { x }.Concat(x.Nodes.OfType<TreeNode>()))
+            //    .Where(x=>x.Checked)
+            //    .Select(x=>x.Tag as TablesWithColumnsDto)
+            //    .Where(x=>x != null).ToList();
+
+            return tvDatabase.Nodes
+               .OfType<TreeNode>()
+               .SelectMany(x => new[] { x }.Concat(x.Nodes.OfType<TreeNode>()))
+               .Where(x => x.Checked)
+               .Select(x => x.Tag as TablesWithColumnsDto)
+               .Where(x => x != null);
+        }
+
+        private void RenderOutput(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto)
         {
             var templateType = Global.IsNameSpaceEnabled ? TemplateType.Namespace : TemplateType.Class;
 
-            var result = _generateTemplate.Generate(templateType, tableWithColumnsDto);
+            var result = string.Empty;
+
+            tableWithColumnsDto.ToList().ForEach(x => result += _generateTemplate.Generate(templateType, x));
+
+            //var result = _generateTemplate.Generate(templateType, tableWithColumnsDto);
 
             //Write to textbox
-            txtOutput.Text = result;
+            rtxtOutput.Text = result;
         }
     }
 }

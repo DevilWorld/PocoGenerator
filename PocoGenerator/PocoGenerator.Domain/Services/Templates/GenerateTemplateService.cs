@@ -43,8 +43,8 @@ namespace PocoGenerator.Domain.Services.Templates
         //    }
         //}
 
-        public string Generate(TemplateType templateType, TablesWithColumnsDto tableWithColumns)
-        {
+        public string Generate(TemplateType templateType, TablesWithColumnsDto tableWithColumns)    //Make IEnumerable<TablesWithColumnsDto>
+        {//3rd parameter bool multipleClasses or not
             switch (templateType)
             {
                 case TemplateType.Namespace:
@@ -83,7 +83,7 @@ namespace PocoGenerator.Domain.Services.Templates
             return string.Empty;
         }
 
-        private string GetClass(TablesWithColumnsDto tableWithColumns)
+        private string GetClass(TablesWithColumnsDto tableWithColumns)      //3rd parameter bool multipleClasses
         {
             var template = Global.TemplateManager[TemplateType.Class];
             var sysObjects = tableWithColumns.MapToModel<SysObjects>();

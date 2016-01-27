@@ -32,19 +32,19 @@
             this.pnlBody = new System.Windows.Forms.Panel();
             this.scBody = new System.Windows.Forms.SplitContainer();
             this.tvDatabase = new System.Windows.Forms.TreeView();
+            this.pnlSettings = new System.Windows.Forms.Panel();
+            this.txtNamespace = new System.Windows.Forms.TextBox();
+            this.lblNamespace = new System.Windows.Forms.Label();
             this.pnlMenuBar = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.pnlSettings = new System.Windows.Forms.Panel();
-            this.lblNamespace = new System.Windows.Forms.Label();
-            this.txtNamespace = new System.Windows.Forms.TextBox();
-            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
             this.scBody.Panel2.SuspendLayout();
             this.scBody.SuspendLayout();
-            this.pnlMenuBar.SuspendLayout();
             this.pnlSettings.SuspendLayout();
+            this.pnlMenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBody
@@ -70,7 +70,7 @@
             // 
             // scBody.Panel2
             // 
-            this.scBody.Panel2.Controls.Add(this.txtOutput);
+            this.scBody.Panel2.Controls.Add(this.rtxtOutput);
             this.scBody.Panel2.Controls.Add(this.pnlSettings);
             this.scBody.Size = new System.Drawing.Size(1282, 818);
             this.scBody.SplitterDistance = 320;
@@ -88,6 +88,31 @@
             this.tvDatabase.Size = new System.Drawing.Size(424, 818);
             this.tvDatabase.TabIndex = 0;
             this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);
+            // 
+            // pnlSettings
+            // 
+            this.pnlSettings.Controls.Add(this.txtNamespace);
+            this.pnlSettings.Controls.Add(this.lblNamespace);
+            this.pnlSettings.Location = new System.Drawing.Point(0, 0);
+            this.pnlSettings.Name = "pnlSettings";
+            this.pnlSettings.Size = new System.Drawing.Size(949, 160);
+            this.pnlSettings.TabIndex = 0;
+            // 
+            // txtNamespace
+            // 
+            this.txtNamespace.Location = new System.Drawing.Point(92, 8);
+            this.txtNamespace.Name = "txtNamespace";
+            this.txtNamespace.Size = new System.Drawing.Size(369, 22);
+            this.txtNamespace.TabIndex = 1;
+            // 
+            // lblNamespace
+            // 
+            this.lblNamespace.AutoSize = true;
+            this.lblNamespace.Location = new System.Drawing.Point(3, 11);
+            this.lblNamespace.Name = "lblNamespace";
+            this.lblNamespace.Size = new System.Drawing.Size(83, 17);
+            this.lblNamespace.TabIndex = 0;
+            this.lblNamespace.Text = "Namespace";
             // 
             // pnlMenuBar
             // 
@@ -108,39 +133,14 @@
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // pnlSettings
+            // rtxtOutput
             // 
-            this.pnlSettings.Controls.Add(this.txtNamespace);
-            this.pnlSettings.Controls.Add(this.lblNamespace);
-            this.pnlSettings.Location = new System.Drawing.Point(0, 0);
-            this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(473, 160);
-            this.pnlSettings.TabIndex = 0;
-            // 
-            // lblNamespace
-            // 
-            this.lblNamespace.AutoSize = true;
-            this.lblNamespace.Location = new System.Drawing.Point(3, 11);
-            this.lblNamespace.Name = "lblNamespace";
-            this.lblNamespace.Size = new System.Drawing.Size(83, 17);
-            this.lblNamespace.TabIndex = 0;
-            this.lblNamespace.Text = "Namespace";
-            // 
-            // txtNamespace
-            // 
-            this.txtNamespace.Location = new System.Drawing.Point(92, 8);
-            this.txtNamespace.Name = "txtNamespace";
-            this.txtNamespace.Size = new System.Drawing.Size(369, 22);
-            this.txtNamespace.TabIndex = 1;
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(0, 157);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(938, 649);
-            this.txtOutput.TabIndex = 2;
+            this.rtxtOutput.Location = new System.Drawing.Point(0, 160);
+            this.rtxtOutput.Name = "rtxtOutput";
+            this.rtxtOutput.ReadOnly = true;
+            this.rtxtOutput.Size = new System.Drawing.Size(960, 658);
+            this.rtxtOutput.TabIndex = 1;
+            this.rtxtOutput.Text = "";
             // 
             // PocoGenerator
             // 
@@ -159,12 +159,11 @@
             this.pnlBody.ResumeLayout(false);
             this.scBody.Panel1.ResumeLayout(false);
             this.scBody.Panel2.ResumeLayout(false);
-            this.scBody.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).EndInit();
             this.scBody.ResumeLayout(false);
-            this.pnlMenuBar.ResumeLayout(false);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
+            this.pnlMenuBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -178,7 +177,7 @@
         private System.Windows.Forms.Panel pnlSettings;
         private System.Windows.Forms.TextBox txtNamespace;
         private System.Windows.Forms.Label lblNamespace;
-        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.RichTextBox rtxtOutput;
     }
 }
 
