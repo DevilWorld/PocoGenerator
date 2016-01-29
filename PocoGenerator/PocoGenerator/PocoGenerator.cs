@@ -60,7 +60,7 @@ namespace PocoGenerator
 
             #region Checkbox
 
-            tvDatabase.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(treeView_DrawNode);
+            tvDatabase.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(tvDatabase_DrawNode);
 
             AssignImagesToTreeView();
 
@@ -97,13 +97,14 @@ namespace PocoGenerator
                     //return GetTables().ToList().Select(x => new TreeNode(" " + x.Name,
                     //        x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray())).ToArray();
 
-                    return GetTables().ToList().Select(x =>
+                    return GetTables().Select(x =>
                     {
                         var node = new TreeNode(" " + x.Name,
-                                        x.Columns.ToList().Select(y =>
+                                        x.Columns.Select(y =>
                                         {
                                             var columnNode = new TreeNode(y.name);
-                                            columnNode.ImageIndex = 3;
+                                            columnNode.ImageIndex = 4;
+                                            columnNode.SelectedImageIndex = 4;
 
                                             return columnNode;
                                         }).ToArray());
@@ -117,8 +118,28 @@ namespace PocoGenerator
                     }).ToArray();
 
                 case DbObjectTypes.Views:
-                    return GetViews().ToList().Select(x => new TreeNode(" " + x.Name,
-                            x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray())).ToArray();
+                    //return GetViews().ToList().Select(x => new TreeNode(" " + x.Name,
+                    //        x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray())).ToArray();
+
+                    return GetViews().Select(x =>
+                    {
+                        var node = new TreeNode(" " + x.Name,
+                                        x.Columns.Select(y =>
+                                        {
+                                            var columnNode = new TreeNode(y.name);
+                                            columnNode.ImageIndex = 4;
+                                            columnNode.SelectedImageIndex = 4;
+
+                                            return columnNode;
+                                        }).ToArray());
+
+                        node.ImageIndex = 3;
+                        node.SelectedImageIndex = 3;
+                        node.Tag = x;
+
+                        return node;
+
+                    }).ToArray();
 
                 case DbObjectTypes.StoredProcedures:
                     return GetStoredProcedures().ToList().Select(x => new TreeNode(" " + x.Name)).ToArray();
@@ -176,24 +197,7 @@ namespace PocoGenerator
         {
             return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.TableValuedFunctions);
         }
-
-        //private void HideTreeViewCheckboxes()
-        //{
-        //    tvDatabase.Nodes.Cast<TreeNode>()
-        //        .Where(x => x.Text == "Tables")
-        //        .Select(x => x.Nodes)
-        //        .ToList()
-        //        .ForEach(x => x.Cast<TreeNode>()
-        //                        .ToList()
-        //                        .ForEach(y => y.Nodes
-        //                                        .Cast<TreeNode>()
-        //                                        .ToList()
-        //                                        .ForEach(z=> z.HideCheckBox()))
-        //                );
-        //}
-
-
-
+                
         private void CheckUncheckChildNodes(TreeNodeCollection nodes, bool blnCheckUncheck)
         {
             //nodes.Cast<TreeNode>().ToList().ForEach(x => x.Checked = blnCheckUncheck);
@@ -252,65 +256,58 @@ namespace PocoGenerator
             return false;
         }
 
-        //private void tvDatabase_DrawNode(object sender, DrawTreeNodeEventArgs e)
-        //{
-        //    if (e.Node.Level == 2)
-        //        e.Node.HideCheckBox();
-
-        //    if (e.Node.Level == 0 || e.Node.Level == 1)
-        //    {
-        //        var nodeText = e.Node.Text;
-        //        e.Graphics.DrawString(nodeText, e.Node.TreeView.Font, Brushes.Black,
-        //            e.Node.Bounds.X, e.Node.Bounds.Y);
-        //    }
-
-        //    e.DrawDefault = true;
-        //}
-
-        private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        private void tvDatabase_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             if (e.Node.Level == 2)
-            {
-                Color backColor, foreColor;
-                if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
-                {
-                    backColor = SystemColors.Highlight;
-                    foreColor = SystemColors.HighlightText;
-                }
-                else if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
-                {
-                    backColor = SystemColors.HotTrack;
-                    foreColor = SystemColors.HighlightText;
-                }
-                else
-                {
-                    backColor = e.Node.BackColor;
-                    foreColor = e.Node.ForeColor;
-                }
+                e.Node.HideCheckBox();            
 
-                Rectangle newBounds = e.Node.Bounds;
-                newBounds.X = 60;
-
-                using (SolidBrush brush = new SolidBrush(backColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.Node.Bounds);
-
-                    e.Graphics.DrawImage(imgList.Images[4], e.Bounds.Right + 75, e.Bounds.Top);
-                }
-                TextRenderer.DrawText(e.Graphics, e.Node.Text, tvDatabase.Font, e.Node.Bounds, foreColor, backColor);
-                if ((e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused)
-                {
-                    ControlPaint.DrawFocusRectangle(e.Graphics, e.Node.Bounds, foreColor, backColor);
-                }
-
-
-                e.DrawDefault = false;
-            }
-            else
-            {
-                e.DrawDefault = true;
-            }
+            e.DrawDefault = true;
         }
+
+        //private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        //{
+        //    if (e.Node.Level == 2)
+        //    {
+        //        Color backColor, foreColor;
+        //        if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
+        //        {
+        //            backColor = SystemColors.Highlight;
+        //            foreColor = SystemColors.HighlightText;
+        //        }
+        //        else if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
+        //        {
+        //            backColor = SystemColors.HotTrack;
+        //            foreColor = SystemColors.HighlightText;
+        //        }
+        //        else
+        //        {
+        //            backColor = e.Node.BackColor;
+        //            foreColor = e.Node.ForeColor;
+        //        }
+
+        //        Rectangle newBounds = e.Node.Bounds;
+        //        newBounds.X = 60;
+
+        //        using (SolidBrush brush = new SolidBrush(backColor))
+        //        {
+        //            //e.Graphics.FillRectangle(brush, e.Node.Bounds);
+
+        //            e.Graphics.DrawImage(imgList.Images[4], e.Bounds.Right + 75, e.Bounds.Top + 50);
+        //        }
+        //        TextRenderer.DrawText(e.Graphics, e.Node.Text, tvDatabase.Font, e.Node.Bounds, foreColor, backColor);
+        //        //if ((e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused)
+        //        //{
+        //        //    ControlPaint.DrawFocusRectangle(e.Graphics, e.Node.Bounds, foreColor, backColor);
+        //        //}
+
+
+        //        e.DrawDefault = false;
+        //    }
+        //    else
+        //    {
+        //        e.DrawDefault = true;
+        //    }
+        //}
         private static bool IsThirdLevel(TreeNode node)
         {
             return node.Parent != null && node.Parent.Parent != null;
@@ -347,13 +344,6 @@ namespace PocoGenerator
 
         private IEnumerable<TablesWithColumnsDto> GetCheckedTreeNodes()
         {
-            //var nodes = tvDatabase.Nodes
-            //    .OfType<TreeNode>()
-            //    .SelectMany(x => new[] { x }.Concat(x.Nodes.OfType<TreeNode>()))
-            //    .Where(x=>x.Checked)
-            //    .Select(x=>x.Tag as TablesWithColumnsDto)
-            //    .Where(x=>x != null).ToList();
-
             return tvDatabase.Nodes
                .OfType<TreeNode>()
                .SelectMany(x => new[] { x }.Concat(x.Nodes.OfType<TreeNode>()))

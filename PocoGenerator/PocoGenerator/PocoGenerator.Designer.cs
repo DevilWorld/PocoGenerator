@@ -32,12 +32,12 @@
             this.pnlBody = new System.Windows.Forms.Panel();
             this.scBody = new System.Windows.Forms.SplitContainer();
             this.tvDatabase = new System.Windows.Forms.TreeView();
+            this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.txtNamespace = new System.Windows.Forms.TextBox();
             this.lblNamespace = new System.Windows.Forms.Label();
             this.pnlMenuBar = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             this.scBody.Panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.scBody.Panel1.Controls.Add(this.tvDatabase);
-            this.scBody.Panel1MinSize = 300;
+            this.scBody.Panel1MinSize = 250;
             // 
             // scBody.Panel2
             // 
@@ -89,13 +89,23 @@
             this.tvDatabase.TabIndex = 0;
             this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);
             // 
+            // rtxtOutput
+            // 
+            this.rtxtOutput.Location = new System.Drawing.Point(0, 160);
+            this.rtxtOutput.Name = "rtxtOutput";
+            this.rtxtOutput.ReadOnly = true;
+            this.rtxtOutput.Size = new System.Drawing.Size(805, 658);
+            this.rtxtOutput.TabIndex = 1;
+            this.rtxtOutput.Text = "";
+            // 
             // pnlSettings
             // 
+            this.pnlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pnlSettings.Controls.Add(this.txtNamespace);
             this.pnlSettings.Controls.Add(this.lblNamespace);
             this.pnlSettings.Location = new System.Drawing.Point(0, 0);
             this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(949, 160);
+            this.pnlSettings.Size = new System.Drawing.Size(617, 160);
             this.pnlSettings.TabIndex = 0;
             // 
             // txtNamespace
@@ -132,15 +142,6 @@
             this.btnSettings.TabIndex = 0;
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // rtxtOutput
-            // 
-            this.rtxtOutput.Location = new System.Drawing.Point(0, 160);
-            this.rtxtOutput.Name = "rtxtOutput";
-            this.rtxtOutput.ReadOnly = true;
-            this.rtxtOutput.Size = new System.Drawing.Size(960, 658);
-            this.rtxtOutput.TabIndex = 1;
-            this.rtxtOutput.Text = "";
             // 
             // PocoGenerator
             // 
