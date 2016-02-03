@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\IDataTypeService.cs" />
     <Compile Include="Interfaces\IDbConnectService.cs" />
     <Compile Include="Interfaces\IDbContext.cs" />
+    <Compile Include="Interfaces\IRenderOutputStrategy.cs" />
     <Compile Include="Interfaces\Templates\IGenerateTemplate.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsRepository.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsService.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Services\BlankSpace\ClassBlankSpaceService.cs" />
     <Compile Include="Services\BlankSpace\PropertiesBlankSpaceService.cs" />
     <Compile Include="Services\ConnectionStringService.cs" />
+    <Compile Include="Services\Output\RenderOutputUsingTablesWithColumnsListService.cs" />
+    <Compile Include="Services\Output\RenderOutputUsingTablesWithColumnsService.cs" />
     <Compile Include="Services\Templates\GenerateTemplateService.cs" />
     <Compile Include="Services\RetrieveDbObjectsService.cs" />
     <Compile Include="Services\SqlDataTypeService.cs" />

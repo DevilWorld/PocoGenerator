@@ -25,19 +25,21 @@ namespace PocoGenerator
         //private readonly IDataTypeService _dataTypeService;
         private readonly IRetrieveDbObjectsService _retrieveDbObjectsService;
         private readonly IGenerateTemplate _generateTemplate;
+        private readonly IRenderOutputStrategy<TablesWithColumnsDto> _renderOutputtable;
+        private readonly IRenderOutputStrategy<IEnumerable<TablesWithColumnsDto>> _renderOutputtables;
 
         ImageList imgList;
 
-
         //TODO On namespace enabled checkbox, reload the dot liquid templates. DotLiquidConfiguration.Configure();
-        public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/, IGenerateTemplate generateTemplate)
+        public PocoGenerator(IRetrieveDbObjectsService retrieveDbObjectsService/*IDataTypeService dataTypeService*/, IGenerateTemplate generateTemplate, IRenderOutputStrategy<TablesWithColumnsDto> renderOutputtable, IRenderOutputStrategy<IEnumerable<TablesWithColumnsDto>> renderOutputtables)
         {
             InitializeComponent();
 
             //_dataTypeService = dataTypeService;
             _retrieveDbObjectsService = retrieveDbObjectsService;
             _generateTemplate = generateTemplate;
-
+            _renderOutputtable = renderOutputtable;
+            _renderOutputtables = renderOutputtables;
             //Test
             //using (var scope = Global.Container.BeginLifetimeScope())
             //{
@@ -54,9 +56,9 @@ namespace PocoGenerator
 
             DisplayConnectToDatabase();
 
-            LoadDatabaseTree();
+            LoadDatabaseTree();            
 
-            //HideTreeViewCheckboxes();
+            SetPanelWidths();
 
             #region Checkbox
 
@@ -64,7 +66,7 @@ namespace PocoGenerator
 
             AssignImagesToTreeView();
 
-            #endregion
+            #endregion            
         }
 
         private void DisplayConnectToDatabase()
@@ -93,33 +95,33 @@ namespace PocoGenerator
         {
             switch (dbObjectType)
             {
-                case DbObjectTypes.Tables:
-                    //return GetTables().ToList().Select(x => new TreeNode(" " + x.Name,
-                    //        x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray())).ToArray();
+                case DbObjectTypes.Tables:                    
 
                     return GetTables().Select(x =>
                     {
-                        var node = new TreeNode(" " + x.Name,
-                                        x.Columns.Select(y =>
-                                        {
-                                            var columnNode = new TreeNode(y.name);
-                                            columnNode.ImageIndex = 4;
-                                            columnNode.SelectedImageIndex = 4;
+                        var folderNodes = new TreeNode(" " + x.Name, 
+                                                new TreeNode[] { new TreeNode("Columns", 1, 1, GetColumnsForTablesInTreeview(x)),
+                                                new TreeNode("Keys", 1, 1) });
+                        
+                        //var node = new TreeNode(" " + x.Name,
+                        //                x.Columns.Select(y =>
+                        //                {
+                        //                    var columnNode = new TreeNode(y.name);
+                        //                    columnNode.ImageIndex = 4;
+                        //                    columnNode.SelectedImageIndex = 4;
 
-                                            return columnNode;
-                                        }).ToArray());
+                        //                    return columnNode;
+                        //                }).ToArray());
 
-                        node.ImageIndex = 3;
-                        node.SelectedImageIndex = 3;
-                        node.Tag = x;
+                        folderNodes.ImageIndex = 3;
+                        folderNodes.SelectedImageIndex = 3;
+                        folderNodes.Tag = x;
 
-                        return node;
+                        return folderNodes;
 
                     }).ToArray();
 
-                case DbObjectTypes.Views:
-                    //return GetViews().ToList().Select(x => new TreeNode(" " + x.Name,
-                    //        x.Columns.ToList().Select(y => new TreeNode(y.name)).ToArray())).ToArray();
+                case DbObjectTypes.Views:                    
 
                     return GetViews().Select(x =>
                     {
@@ -197,6 +199,24 @@ namespace PocoGenerator
         {
             return _retrieveDbObjectsService.GetDbObjects(DbObjectTypes.TableValuedFunctions);
         }
+
+        private TreeNode[] GetColumnsForTablesInTreeview(TablesWithColumnsDto tablesWithColumns)
+        {
+            return tablesWithColumns.Columns.Select(y =>
+                                        {
+                                            var columnNode = new TreeNode(y.name);
+                                            columnNode.ImageIndex = 4;
+                                            columnNode.SelectedImageIndex = 4;
+
+                                            return columnNode;
+                                        }).ToArray();
+
+            //node.ImageIndex = 3;
+            //node.SelectedImageIndex = 3;
+            //node.Tag = tablesWithColumns;
+
+            //return node;
+        }
                 
         private void CheckUncheckChildNodes(TreeNodeCollection nodes, bool blnCheckUncheck)
         {
@@ -258,7 +278,7 @@ namespace PocoGenerator
 
         private void tvDatabase_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            if (e.Node.Level == 2)
+            if (e.Node.Level == 2 || e.Node.Level == 3)
                 e.Node.HideCheckBox();            
 
             e.DrawDefault = true;
@@ -354,16 +374,48 @@ namespace PocoGenerator
 
         private void RenderOutput(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto)
         {
-            var templateType = Global.IsNameSpaceEnabled ? TemplateType.Namespace : TemplateType.Class;
+            rtxtOutput.Text = _renderOutputtables.RenderOutput(tableWithColumnsDto);
+        }
 
-            var result = string.Empty;
+        private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
+        { 
+            rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
+        }
 
-            tableWithColumnsDto.ToList().ForEach(x => result += _generateTemplate.Generate(templateType, x));
+        //private void Render(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto = null, TablesWithColumnsDto singleTable = null)
+        //{
+        //    var templateType = Global.IsNameSpaceEnabled ? TemplateType.Namespace : TemplateType.Class;
 
-            //var result = _generateTemplate.Generate(templateType, tableWithColumnsDto);
+        //    var result = string.Empty;
 
-            //Write to textbox
-            rtxtOutput.Text = result;
+        //    if (tableWithColumnsDto != null)
+        //        tableWithColumnsDto.ToList().ForEach(x => result += _generateTemplate.Generate(templateType, x));
+
+        //    if (singleTable!=null)
+        //        result += _generateTemplate.Generate(templateType, singleTable);
+
+        //    //Write to textbox
+        //    rtxtOutput.Text = result;
+        //}        
+
+        private void tvDatabase_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (GetCheckedTreeNodes().Count() == 0)
+                RenderOutput(e.Node.Tag as TablesWithColumnsDto);
+        }
+
+        private void scBody_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            if (scBody.SplitterDistance >= tvDatabase.Width)
+                scBody.SplitterDistance = tvDatabase.Width;
+
+            SetPanelWidths();
+        }
+
+        private void SetPanelWidths()
+        {
+            panel1.Width = scBody.Panel2.Width;
+            pnlSettings.Width = scBody.Panel2.Width;
         }
     }
 }

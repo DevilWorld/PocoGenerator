@@ -32,17 +32,20 @@
             this.pnlBody = new System.Windows.Forms.Panel();
             this.scBody = new System.Windows.Forms.SplitContainer();
             this.tvDatabase = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.txtNamespace = new System.Windows.Forms.TextBox();
             this.lblNamespace = new System.Windows.Forms.Label();
             this.pnlMenuBar = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.chkRelations = new System.Windows.Forms.CheckBox();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
             this.scBody.Panel2.SuspendLayout();
             this.scBody.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlSettings.SuspendLayout();
             this.pnlMenuBar.SuspendLayout();
             this.SuspendLayout();
@@ -70,42 +73,60 @@
             // 
             // scBody.Panel2
             // 
-            this.scBody.Panel2.Controls.Add(this.rtxtOutput);
+            this.scBody.Panel2.Controls.Add(this.panel1);
             this.scBody.Panel2.Controls.Add(this.pnlSettings);
+            this.scBody.Panel2MinSize = 500;
             this.scBody.Size = new System.Drawing.Size(1282, 818);
-            this.scBody.SplitterDistance = 320;
+            this.scBody.SplitterDistance = 315;
             this.scBody.SplitterWidth = 1;
             this.scBody.TabIndex = 0;
+            this.scBody.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.scBody_SplitterMoved);
             // 
             // tvDatabase
             // 
             this.tvDatabase.BackColor = System.Drawing.SystemColors.Window;
             this.tvDatabase.CheckBoxes = true;
+            this.tvDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvDatabase.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.tvDatabase.Location = new System.Drawing.Point(0, 0);
             this.tvDatabase.Name = "tvDatabase";
             this.tvDatabase.ShowLines = false;
-            this.tvDatabase.Size = new System.Drawing.Size(424, 818);
+            this.tvDatabase.Size = new System.Drawing.Size(315, 818);
             this.tvDatabase.TabIndex = 0;
             this.tvDatabase.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterCheck);
+            this.tvDatabase.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDatabase_AfterSelect);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rtxtOutput);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 160);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(966, 658);
+            this.panel1.TabIndex = 2;
             // 
             // rtxtOutput
             // 
-            this.rtxtOutput.Location = new System.Drawing.Point(0, 160);
+            this.rtxtOutput.BackColor = System.Drawing.SystemColors.Window;
+            this.rtxtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtxtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtOutput.Location = new System.Drawing.Point(0, 0);
             this.rtxtOutput.Name = "rtxtOutput";
             this.rtxtOutput.ReadOnly = true;
-            this.rtxtOutput.Size = new System.Drawing.Size(805, 658);
-            this.rtxtOutput.TabIndex = 1;
+            this.rtxtOutput.Size = new System.Drawing.Size(966, 658);
+            this.rtxtOutput.TabIndex = 2;
             this.rtxtOutput.Text = "";
             // 
             // pnlSettings
             // 
-            this.pnlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pnlSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlSettings.Controls.Add(this.chkRelations);
             this.pnlSettings.Controls.Add(this.txtNamespace);
             this.pnlSettings.Controls.Add(this.lblNamespace);
+            this.pnlSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSettings.Location = new System.Drawing.Point(0, 0);
             this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(617, 160);
+            this.pnlSettings.Size = new System.Drawing.Size(966, 160);
             this.pnlSettings.TabIndex = 0;
             // 
             // txtNamespace
@@ -143,6 +164,16 @@
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // chkRelations
+            // 
+            this.chkRelations.AutoSize = true;
+            this.chkRelations.Location = new System.Drawing.Point(6, 47);
+            this.chkRelations.Name = "chkRelations";
+            this.chkRelations.Size = new System.Drawing.Size(159, 21);
+            this.chkRelations.TabIndex = 2;
+            this.chkRelations.Text = "Include EF Relations";
+            this.chkRelations.UseVisualStyleBackColor = true;
+            // 
             // PocoGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -151,10 +182,12 @@
             this.ClientSize = new System.Drawing.Size(1282, 853);
             this.Controls.Add(this.pnlMenuBar);
             this.Controls.Add(this.pnlBody);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PocoGenerator";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Poco Generator";
             this.pnlBody.ResumeLayout(false);
@@ -162,6 +195,7 @@
             this.scBody.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).EndInit();
             this.scBody.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
             this.pnlMenuBar.ResumeLayout(false);
@@ -178,7 +212,9 @@
         private System.Windows.Forms.Panel pnlSettings;
         private System.Windows.Forms.TextBox txtNamespace;
         private System.Windows.Forms.Label lblNamespace;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox rtxtOutput;
+        private System.Windows.Forms.CheckBox chkRelations;
     }
 }
 

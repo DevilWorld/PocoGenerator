@@ -10,6 +10,7 @@ using PocoGenerator.Infrastructure;
 using PocoGenerator.Domain.DotLiquidDrops;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Services.BlankSpace;
+using PocoGenerator.Domain.Services.Output;
 
 namespace PocoGenerator.StartUp
 {
@@ -42,8 +43,9 @@ namespace PocoGenerator.StartUp
             builder.RegisterType<ClassBlankSpaceService>().AsImplementedInterfaces();
             builder.RegisterType<PropertiesBlankSpaceService>().AsImplementedInterfaces();
 
-            //builder.RegisterType<ITemplate<ClassTemplateService>>();
-            //builder.RegisterType<ITemplate<PropertiesTemplateSevice>>();
+            //Output configuration
+            builder.RegisterType<RenderOutputUsingTablesWithColumnsService>().AsImplementedInterfaces();
+            builder.RegisterType<RenderOutputUsingTablesWithColumnsListService>().AsImplementedInterfaces();
 
             //Register Repositories
             builder.RegisterType<RetrieveSqlDbObjectsRepository>().AsImplementedInterfaces();
