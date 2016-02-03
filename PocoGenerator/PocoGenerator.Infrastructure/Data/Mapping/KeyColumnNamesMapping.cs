@@ -8,7 +8,7 @@ using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Infrastructure.Data.Mapping
 {
-    public class KeyColumnNamesMapping : EntityTypeConfiguration<KeyColumnNames>
+    public class KeyColumnNamesMapping : EntityTypeConfiguration<KeyColumnUsage>
     {
         public KeyColumnNamesMapping()
         {
@@ -24,6 +24,9 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
             Property(p => p.COLUMN_NAME).HasColumnName("COLUMN_NAME");
             Property(p => p.ORDINAL_POSITION).HasColumnName("ORDINAL_POSITION");
 
+            //Relation configuration
+            HasRequired(c => c.ForeignKey)
+                .WithRequiredPrincipal();
         }
     }
 }

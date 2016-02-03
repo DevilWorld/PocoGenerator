@@ -75,6 +75,31 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
             return views;
         }
 
+        public IEnumerable<ColumnsWithKeysDto> GetColumnsWithKeys()
+        {
+            var columns = _pocoContext.KeyColumnNames.ToList();
+
+            var columnsWithKeys = (from col in _pocoContext.KeyColumnNames
+                                   join fk in _pocoContext.ForeignKeys on col.CONSTRAINT_NAME equals fk.name
+                                   into keys
+                                   from c in keys.DefaultIfEmpty()
+                                   select new ColumnsWithKeysDto
+                                   {
+                                       CONSTRAINT_CATALOG = col.CONSTRAINT_CATALOG,
+                                       CONSTRAINT_SCHEMA = col.CONSTRAINT_SCHEMA,
+                                       CONSTRAINT_NAME = col.CONSTRAINT_NAME,
+                                       TABLE_CATALOG = col.TABLE_CATALOG,
+                                       TABLE_SCHEMA = col.TABLE_SCHEMA,
+                                       TABLE_NAME = col.TABLE_NAME,
+                                       COLUMN_NAME = col.COLUMN_NAME,
+                                       ORDINAL_POSITION = col.ORDINAL_POSITION,
+                                       KeyType = c == null ? "Primary Key" : "Foreign Key"
+                                   }).ToList();
+
+            return columnsWithKeys;
+                                 
+        }
+
         private void SetConnectionStringForDbToBeConnected()
         {
             _pocoContext.Database.Connection.ConnectionString = Global.ConnectionString;

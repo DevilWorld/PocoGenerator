@@ -416,6 +416,14 @@ namespace PocoGenerator
         {
             panel1.Width = scBody.Panel2.Width;
             pnlSettings.Width = scBody.Panel2.Width;
+
+            //testing
+            using (var scope = Global.Container.BeginLifetimeScope())
+            {
+                var templateService = scope.Resolve<IRetrieveDbObjectsRepository>();
+                var result = templateService.GetColumnsWithKeys();
+            }
+            //testing
         }
     }
 }
