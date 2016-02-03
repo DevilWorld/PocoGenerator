@@ -25,7 +25,7 @@ namespace PocoGenerator.Infrastructure.Data.Mapping
             Property(p => p.ORDINAL_POSITION).HasColumnName("ORDINAL_POSITION");
 
             //Relation configuration
-            HasRequired(c => c.ForeignKey)
+            HasRequired(c => c.TableConstraints)
                 .WithRequiredPrincipal();
         }
     }

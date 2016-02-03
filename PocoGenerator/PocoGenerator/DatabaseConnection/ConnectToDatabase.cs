@@ -74,7 +74,7 @@ namespace PocoGenerator.DatabaseConnection
 
                 if (_dbConnectService.TestConnection(connectionString))
                 {
-                    Global.ConnectionString = connectionString;
+                    //Global.ConnectionString = connectionString;
 
                     LoadDataTypeMappings();
 
@@ -116,7 +116,7 @@ namespace PocoGenerator.DatabaseConnection
                     {
                         cmbSelectDatabase.DataSource = lstDatabases;
                         cmbSelectDatabase.DisplayMember = "DbName";
-                        cmbSelectDatabase.ValueMember = "DbId";                        
+                        cmbSelectDatabase.ValueMember = "DbId";
                     }
                 }
             }
@@ -137,7 +137,7 @@ namespace PocoGenerator.DatabaseConnection
 
                 if (_dbConnectService.TestConnection(connectionString))
                 {
-                    Global.ConnectionString = connectionString;                    
+                    Global.ConnectionString = connectionString;
 
                     MessageBox.Show("Test Connection Succeeded", "Poco Generator", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -233,6 +233,6 @@ namespace PocoGenerator.DatabaseConnection
             Global.DataTypeMapper = _dataTypeService.GetDataTypeMappings();
         }
 
-        #endregion        
+        #endregion
     }
 }

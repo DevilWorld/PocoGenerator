@@ -10,5 +10,6 @@ namespace PocoGenerator.Domain.Interfaces
     public interface IConnectionStringService
     {
         string BuildConnectionString(ConnectionStringProperties connectionStringProperties, bool blnPartialConnectionString = false);
+        string GetConnectionString();
     }
 }

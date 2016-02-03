@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Mapping\ForeignKeysMapping.cs" />
+    <Compile Include="Data\Mapping\ConstraintTypeMapping.cs" />
     <Compile Include="Data\Mapping\KeyColumnNamesMapping.cs" />
     <Compile Include="Data\Mapping\SysColumnsMapping.cs" />
     <Compile Include="Data\Mapping\SysObjectsMapping.cs" />

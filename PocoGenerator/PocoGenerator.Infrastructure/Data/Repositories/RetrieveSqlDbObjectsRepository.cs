@@ -80,9 +80,8 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
             var columns = _pocoContext.KeyColumnNames.ToList();
 
             var columnsWithKeys = (from col in _pocoContext.KeyColumnNames
-                                   join fk in _pocoContext.ForeignKeys on col.CONSTRAINT_NAME equals fk.name
-                                   into keys
-                                   from c in keys.DefaultIfEmpty()
+                                   join tc in _pocoContext.TableConstraints on col.CONSTRAINT_NAME equals tc.CONSTRAINT_NAME
+                                   where (tc.CONSTRAINT_TYPE == "PRIMARY KEY" || tc.CONSTRAINT_TYPE == "FOREIGN KEY")
                                    select new ColumnsWithKeysDto
                                    {
                                        CONSTRAINT_CATALOG = col.CONSTRAINT_CATALOG,
@@ -93,11 +92,11 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
                                        TABLE_NAME = col.TABLE_NAME,
                                        COLUMN_NAME = col.COLUMN_NAME,
                                        ORDINAL_POSITION = col.ORDINAL_POSITION,
-                                       KeyType = c == null ? "Primary Key" : "Foreign Key"
+                                       KeyType = tc.CONSTRAINT_TYPE
                                    }).ToList();
 
             return columnsWithKeys;
-                                 
+
         }
 
         private void SetConnectionStringForDbToBeConnected()

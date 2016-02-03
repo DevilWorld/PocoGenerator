@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PocoGenerator.Domain.Models.BaseObjects
 {
-    public class KeyColumnUsage
+    public class TableConstraints
     {
         public string CONSTRAINT_CATALOG { get; set; }
         public string CONSTRAINT_SCHEMA { get; set; }
@@ -14,11 +14,9 @@ namespace PocoGenerator.Domain.Models.BaseObjects
         public string TABLE_CATALOG { get; set; }
         public string TABLE_SCHEMA { get; set; }
         public string TABLE_NAME { get; set; }
-        public string COLUMN_NAME { get; set; }
-        public int ORDINAL_POSITION { get; set; }
+        public string CONSTRAINT_TYPE { get; set; }
 
         //Navigation Property
-        //public ForeignKeys ForeignKey { get; set; }
-        public virtual TableConstraints TableConstraints { get; set; }
+        public virtual KeyColumnUsage KeysWithColumnNames { get; set; }
     }
 }

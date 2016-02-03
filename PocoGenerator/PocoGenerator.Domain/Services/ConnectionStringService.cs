@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using PocoGenerator.Domain;
 
 namespace PocoGenerator.Domain.Services
 {
@@ -37,12 +38,17 @@ namespace PocoGenerator.Domain.Services
                     builder.IntegratedSecurity = true;
                 }
 
-
+                Global.ConnectionString = builder.ConnectionString;
 
                 return builder.ConnectionString;
             }
 
             return string.Empty;
+        }
+
+        public string GetConnectionString()
+        {
+            return Global.ConnectionString;
         }
     }
 }

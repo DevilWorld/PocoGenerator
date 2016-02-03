@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseObjects\ForeignKeys.cs" />
     <Compile Include="BaseObjects\SysTypes.cs" />
+    <Compile Include="BaseObjects\TableConstraints.cs" />
     <Compile Include="ConnectionStringProperties.cs" />
     <Compile Include="DatabaseName.cs" />
     <Compile Include="Dto\ColumnsWithKeysDto.cs" />

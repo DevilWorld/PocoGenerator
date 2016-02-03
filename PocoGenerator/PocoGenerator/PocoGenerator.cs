@@ -52,11 +52,11 @@ namespace PocoGenerator
             //                                }
             //    });
             //}
-            //Endof test            
+            //Endof test
 
             DisplayConnectToDatabase();
 
-            LoadDatabaseTree();            
+            LoadDatabaseTree();
 
             SetPanelWidths();
 
@@ -66,7 +66,7 @@ namespace PocoGenerator
 
             AssignImagesToTreeView();
 
-            #endregion            
+            #endregion
         }
 
         private void DisplayConnectToDatabase()
@@ -95,14 +95,14 @@ namespace PocoGenerator
         {
             switch (dbObjectType)
             {
-                case DbObjectTypes.Tables:                    
+                case DbObjectTypes.Tables:
 
                     return GetTables().Select(x =>
                     {
-                        var folderNodes = new TreeNode(" " + x.Name, 
+                        var folderNodes = new TreeNode(" " + x.Name,
                                                 new TreeNode[] { new TreeNode("Columns", 1, 1, GetColumnsForTablesInTreeview(x)),
                                                 new TreeNode("Keys", 1, 1) });
-                        
+
                         //var node = new TreeNode(" " + x.Name,
                         //                x.Columns.Select(y =>
                         //                {
@@ -121,7 +121,7 @@ namespace PocoGenerator
 
                     }).ToArray();
 
-                case DbObjectTypes.Views:                    
+                case DbObjectTypes.Views:
 
                     return GetViews().Select(x =>
                     {
@@ -157,14 +157,14 @@ namespace PocoGenerator
         private void AssignImagesToTreeView()
         {
             var path = System.IO.Directory.GetCurrentDirectory();
-            imgList = new ImageList();            
+            imgList = new ImageList();
 
             imgList.Images.Add("Database", Image.FromFile(path + @"\Images\database.jpg"));
             imgList.Images.Add("Folder", Image.FromFile(path + @"\Images\folder.png"));
             imgList.Images.Add("FolderOpen", Image.FromFile(path + @"\Images\folder_open.png"));
             imgList.Images.Add("Table", Image.FromFile(path + @"\Images\table1.png"));
             imgList.Images.Add("Columns", Image.FromFile(path + @"\Images\columns.png"));
-                        
+
             Point destPt = new Point(6, 0);
             Size size = new Size(22, 16);
             tvDatabase.ImageList = new ImageList();
@@ -217,7 +217,7 @@ namespace PocoGenerator
 
             //return node;
         }
-                
+
         private void CheckUncheckChildNodes(TreeNodeCollection nodes, bool blnCheckUncheck)
         {
             //nodes.Cast<TreeNode>().ToList().ForEach(x => x.Checked = blnCheckUncheck);
@@ -249,7 +249,7 @@ namespace PocoGenerator
 
             //Write code to generate template
             RenderOutput(checkedNodes);
-                     
+
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace PocoGenerator
         private void tvDatabase_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             if (e.Node.Level == 2 || e.Node.Level == 3)
-                e.Node.HideCheckBox();            
+                e.Node.HideCheckBox();
 
             e.DrawDefault = true;
         }
@@ -378,7 +378,7 @@ namespace PocoGenerator
         }
 
         private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
-        { 
+        {
             rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
         }
 
@@ -396,7 +396,7 @@ namespace PocoGenerator
 
         //    //Write to textbox
         //    rtxtOutput.Text = result;
-        //}        
+        //}
 
         private void tvDatabase_AfterSelect(object sender, TreeViewEventArgs e)
         {
