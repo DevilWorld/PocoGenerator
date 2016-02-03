@@ -400,7 +400,7 @@ namespace PocoGenerator
 
         private void tvDatabase_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (GetCheckedTreeNodes().Count() == 0)
+            if (GetCheckedTreeNodes().Any())
                 RenderOutput(e.Node.Tag as TablesWithColumnsDto);
         }
 

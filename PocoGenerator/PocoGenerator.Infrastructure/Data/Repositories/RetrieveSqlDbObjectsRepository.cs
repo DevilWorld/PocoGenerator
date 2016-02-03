@@ -9,6 +9,7 @@ using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.Dto;
 using PocoGenerator.Infrastructure.Data.Repositories;
 using PocoGenerator.Domain;
+using PocoGenerator.Domain.Models.BaseObjects;
 
 namespace PocoGenerator.Infrastructure.Data.Repositories
 {
@@ -37,13 +38,30 @@ namespace PocoGenerator.Infrastructure.Data.Repositories
             //return _pocoContext.SysObjects.Where(x => x.xtype == "U").ToList();
 
             var tables = (from obj in _pocoContext.SysObjects
-                          where obj.xtype == "U"
+                join kcu in _pocoContext.KeyColumnNames on obj.name equals kcu.TABLE_NAME
+                join tc in _pocoContext.TableConstraints on kcu.CONSTRAINT_NAME equals tc.CONSTRAINT_NAME       //TODO make it as left join, in case if the table is not having key, then it will be ignored
+                where obj.xtype == "U" && (tc.CONSTRAINT_TYPE == "PRIMARY KEY" || tc.CONSTRAINT_TYPE == "FOREIGN KEY")
                           select new TablesWithColumnsDto
-                          {
-                              Id = obj.id,
-                              Name = obj.name,
-                              Columns = obj.Columns
-                          }).ToList();
+                {
+                    Id = obj.id,
+                    Name = obj.name,
+                    Columns = obj.Columns,
+                    ColumnsWithKeys =
+                        new List<ColumnsWithKeysDto>()
+                        {
+                            new ColumnsWithKeysDto()
+                            {
+                                CONSTRAINT_NAME = kcu.CONSTRAINT_NAME,
+                                CONSTRAINT_SCHEMA = kcu.CONSTRAINT_SCHEMA,
+                                CONSTRAINT_CATALOG = kcu.CONSTRAINT_CATALOG,
+                                TABLE_NAME = kcu.TABLE_NAME,
+                                TABLE_SCHEMA = kcu.TABLE_SCHEMA,
+                                TABLE_CATALOG = kcu.TABLE_CATALOG,
+                                COLUMN_NAME = kcu.COLUMN_NAME,
+                                KeyType = tc.CONSTRAINT_TYPE
+                            }
+                        }
+                }).ToList();
 
             return tables;
         }
