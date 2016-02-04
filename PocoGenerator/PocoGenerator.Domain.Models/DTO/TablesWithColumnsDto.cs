@@ -13,6 +13,6 @@ namespace PocoGenerator.Domain.Models.Dto
         public string Name { get; set; }
 
         public IList<SysColumns> Columns { get; set; }
-        public IList<ColumnsWithKeysDto> ColumnsWithKeys { get; set; }
+        public List<ColumnsWithKeysDto> ColumnsWithKeys { get; set; }
     }
 }

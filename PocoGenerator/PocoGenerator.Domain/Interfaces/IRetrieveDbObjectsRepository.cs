@@ -13,7 +13,6 @@ namespace PocoGenerator.Domain.Interfaces
         IEnumerable<TablesWithColumnsDto> GetTables();
         IEnumerable<TablesWithColumnsDto> GetViews();
         IEnumerable<TablesWithColumnsDto> GetStoredProcedures();
-        IEnumerable<TablesWithColumnsDto> GetTableValuedFunctions();
-        IEnumerable<ColumnsWithKeysDto> GetColumnsWithKeys();
+        IEnumerable<TablesWithColumnsDto> GetTableValuedFunctions();        
     }
 }

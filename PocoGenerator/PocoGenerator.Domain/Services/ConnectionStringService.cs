@@ -38,6 +38,8 @@ namespace PocoGenerator.Domain.Services
                     builder.IntegratedSecurity = true;
                 }
 
+                builder.MultipleActiveResultSets = true;
+                
                 Global.ConnectionString = builder.ConnectionString;
 
                 return builder.ConnectionString;

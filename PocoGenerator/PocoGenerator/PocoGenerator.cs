@@ -100,19 +100,11 @@ namespace PocoGenerator
                     return GetTables().Select(x =>
                     {
                         var folderNodes = new TreeNode(" " + x.Name,
-                                                new TreeNode[] { new TreeNode("Columns", 1, 1, GetColumnsForTablesInTreeview(x)),
-                                                new TreeNode("Keys", 1, 1) });
-
-                        //var node = new TreeNode(" " + x.Name,
-                        //                x.Columns.Select(y =>
-                        //                {
-                        //                    var columnNode = new TreeNode(y.name);
-                        //                    columnNode.ImageIndex = 4;
-                        //                    columnNode.SelectedImageIndex = 4;
-
-                        //                    return columnNode;
-                        //                }).ToArray());
-
+                                                new TreeNode[] {
+                                                                    new TreeNode("Columns", 1, 1, GetColumnsForTablesInTreeview(x)),
+                                                                    //new TreeNode("Keys", 1, 1)
+                                                                });
+                        
                         folderNodes.ImageIndex = 3;
                         folderNodes.SelectedImageIndex = 3;
                         folderNodes.Tag = x;
@@ -164,6 +156,8 @@ namespace PocoGenerator
             imgList.Images.Add("FolderOpen", Image.FromFile(path + @"\Images\folder_open.png"));
             imgList.Images.Add("Table", Image.FromFile(path + @"\Images\table1.png"));
             imgList.Images.Add("Columns", Image.FromFile(path + @"\Images\columns.png"));
+            imgList.Images.Add("PrimaryKey", Image.FromFile(path + @"\Images\primary_key.png"));
+            imgList.Images.Add("ForeignKey", Image.FromFile(path + @"\Images\foreign_key.png"));
 
             Point destPt = new Point(6, 0);
             Size size = new Size(22, 16);
@@ -202,11 +196,24 @@ namespace PocoGenerator
 
         private TreeNode[] GetColumnsForTablesInTreeview(TablesWithColumnsDto tablesWithColumns)
         {
+            var columnsWithPrimaryOrForeignKey = tablesWithColumns.ColumnsWithKeys;
+
             return tablesWithColumns.Columns.Select(y =>
                                         {
                                             var columnNode = new TreeNode(y.name);
-                                            columnNode.ImageIndex = 4;
-                                            columnNode.SelectedImageIndex = 4;
+                                            //Set image for primary/foreign key
+                                            var blnColumnExists = columnsWithPrimaryOrForeignKey.Any(x => x.COLUMN_NAME == y.name);
+                                            if (blnColumnExists)
+                                            {
+                                                var keyType = columnsWithPrimaryOrForeignKey.Where(z => z.COLUMN_NAME == y.name).Select(k => k.KeyType).ToList();
+                                                columnNode.ImageIndex = keyType.Contains("PRIMARY KEY") ? 5 : 6;
+                                                columnNode.SelectedImageIndex = keyType.Contains("PRIMARY KEY") ? 5 : 6;
+                                            }
+                                            else
+                                            {
+                                                columnNode.ImageIndex = 4;
+                                                columnNode.SelectedImageIndex = 4;
+                                            }
 
                                             return columnNode;
                                         }).ToArray();
@@ -415,15 +422,7 @@ namespace PocoGenerator
         private void SetPanelWidths()
         {
             panel1.Width = scBody.Panel2.Width;
-            pnlSettings.Width = scBody.Panel2.Width;
-
-            //testing
-            using (var scope = Global.Container.BeginLifetimeScope())
-            {
-                var templateService = scope.Resolve<IRetrieveDbObjectsRepository>();
-                var result = templateService.GetColumnsWithKeys();
-            }
-            //testing
+            pnlSettings.Width = scBody.Panel2.Width;            
         }
     }
 }
