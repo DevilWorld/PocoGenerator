@@ -25,7 +25,9 @@ namespace PocoGenerator.Domain.Services.Output
             var result = string.Empty;
 
             if (tablesWithColumnsDto != null)
-                tablesWithColumnsDto.ToList().ForEach(x => result += _generateTemplate.Generate(templateType, x));
+                tablesWithColumnsDto.ToList().ForEach(x => result += 
+                                                        (string.IsNullOrEmpty(result) ? string.Empty : Environment.NewLine) + 
+                                                        _generateTemplate.Generate(templateType, x));
 
             return result;
         }

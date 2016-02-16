@@ -9,6 +9,8 @@ using PocoGenerator.Domain.Interfaces.Templates;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Models.Enums;
 using PocoGenerator.Domain.Services.BlankSpace;
+using PocoGenerator.Domain.Models.Dto;
+using System.Drawing;
 
 namespace PocoGenerator.Domain.Services.Templates
 {
@@ -26,7 +28,7 @@ namespace PocoGenerator.Domain.Services.Templates
             StringBuilder sbTemplate = new StringBuilder();
             sbTemplate.Append(_blankSpaceService.ApplyBlankSpace(Global.IsNameSpaceEnabled));    //TODO Remove template type from this ApplyBlankSpace(). We should hard-code template here bcoz this is class templates service
             sbTemplate.Append("public {{column.datatype}} {{column.name}} { get; set; }");
-            sbTemplate.AppendLine();
+            sbTemplate.AppendLine();            
 
             return Template.Parse(sbTemplate.ToString());
         }

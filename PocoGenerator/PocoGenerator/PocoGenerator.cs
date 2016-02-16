@@ -15,6 +15,7 @@ using PocoGenerator.Domain.Models;
 using PocoGenerator.Domain.Models.BaseObjects;
 using PocoGenerator.Domain.Models.Dto;
 using PocoGenerator.StartUp;
+using PocoGenerator.ExtensionMethods;
 
 namespace PocoGenerator
 {
@@ -381,12 +382,19 @@ namespace PocoGenerator
 
         private void RenderOutput(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto)
         {
-            rtxtOutput.Text = _renderOutputtables.RenderOutput(tableWithColumnsDto);
+            //rtxtOutput.Text = _renderOutputtables.RenderOutput(tableWithColumnsDto);
+            rtxtOutput.Clear();
+
+            rtxtOutput.AppendColoredText(_renderOutputtables.RenderOutput(tableWithColumnsDto), Color.Blue);
         }
 
         private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
         {
-            rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
+            //rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
+
+            rtxtOutput.Clear();
+
+            rtxtOutput.AppendColoredText( _renderOutputtable.RenderOutput(tableWithColumnsDto), Color.Blue);
         }
 
         //private void Render(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto = null, TablesWithColumnsDto singleTable = null)
@@ -407,7 +415,7 @@ namespace PocoGenerator
 
         private void tvDatabase_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (GetCheckedTreeNodes().Any())
+            if (!GetCheckedTreeNodes().Any())
                 RenderOutput(e.Node.Tag as TablesWithColumnsDto);
         }
 

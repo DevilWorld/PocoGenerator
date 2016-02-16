@@ -35,11 +35,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.pnlSettings = new System.Windows.Forms.Panel();
+            this.chkRelations = new System.Windows.Forms.CheckBox();
             this.txtNamespace = new System.Windows.Forms.TextBox();
             this.lblNamespace = new System.Windows.Forms.Label();
             this.pnlMenuBar = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.chkRelations = new System.Windows.Forms.CheckBox();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
@@ -88,6 +88,7 @@
             this.tvDatabase.CheckBoxes = true;
             this.tvDatabase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvDatabase.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.tvDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvDatabase.Location = new System.Drawing.Point(0, 0);
             this.tvDatabase.Name = "tvDatabase";
             this.tvDatabase.ShowLines = false;
@@ -129,6 +130,16 @@
             this.pnlSettings.Size = new System.Drawing.Size(966, 160);
             this.pnlSettings.TabIndex = 0;
             // 
+            // chkRelations
+            // 
+            this.chkRelations.AutoSize = true;
+            this.chkRelations.Location = new System.Drawing.Point(6, 47);
+            this.chkRelations.Name = "chkRelations";
+            this.chkRelations.Size = new System.Drawing.Size(159, 21);
+            this.chkRelations.TabIndex = 2;
+            this.chkRelations.Text = "Include EF Relations";
+            this.chkRelations.UseVisualStyleBackColor = true;
+            // 
             // txtNamespace
             // 
             this.txtNamespace.Location = new System.Drawing.Point(92, 8);
@@ -163,16 +174,6 @@
             this.btnSettings.TabIndex = 0;
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // chkRelations
-            // 
-            this.chkRelations.AutoSize = true;
-            this.chkRelations.Location = new System.Drawing.Point(6, 47);
-            this.chkRelations.Name = "chkRelations";
-            this.chkRelations.Size = new System.Drawing.Size(159, 21);
-            this.chkRelations.TabIndex = 2;
-            this.chkRelations.Text = "Include EF Relations";
-            this.chkRelations.UseVisualStyleBackColor = true;
             // 
             // PocoGenerator
             // 

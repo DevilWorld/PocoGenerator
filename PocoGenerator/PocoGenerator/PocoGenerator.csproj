@@ -72,6 +72,7 @@
     <Compile Include="DatabaseConnection\ConnectToDatabase.Designer.cs">
       <DependentUpon>ConnectToDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtensionMethods\RichTextBoxExtensionMethods.cs" />
     <Compile Include="PocoGenerator.cs">
       <SubType>Form</SubType>
     </Compile>

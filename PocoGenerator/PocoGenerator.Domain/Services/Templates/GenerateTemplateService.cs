@@ -23,28 +23,10 @@ namespace PocoGenerator.Domain.Services.Templates
         public GenerateTemplateService(/*ITemplate<SysObjects> template*/)
         {
             //_template = template;            
-        }
+        }        
 
-        //public void GetTemplateObject(TemplateType templateType)
-        //{
-        //    switch (templateType)
-        //    {
-        //        case TemplateType.Class:
-        //            {
-        //                var template = Global.ParsedTemplates[TemplateType.Class];
-        //                var result = template.Render(Hash.FromAnonymousObject(new { sysobjects = new SysObjectsDrop(new SysObjects() { name = "tblAddress" }) }));
-        //                break;
-        //            }
-        //        default:
-        //            {
-        //                var template = Global.ParsedTemplates[TemplateType.Class];
-        //                break;
-        //            }
-        //    }
-        //}
-
-        public string Generate(TemplateType templateType, TablesWithColumnsDto tableWithColumns)    //Make IEnumerable<TablesWithColumnsDto>
-        {//3rd parameter bool multipleClasses or not
+        public string Generate(TemplateType templateType, TablesWithColumnsDto tableWithColumns)
+        {
             switch (templateType)
             {
                 case TemplateType.Namespace:
@@ -83,7 +65,7 @@ namespace PocoGenerator.Domain.Services.Templates
             return string.Empty;
         }
 
-        private string GetClass(TablesWithColumnsDto tableWithColumns)      //3rd parameter bool multipleClasses
+        private string GetClass(TablesWithColumnsDto tableWithColumns)
         {
             var template = Global.TemplateManager[TemplateType.Class];
             var sysObjects = tableWithColumns.MapToModel<SysObjects>();
