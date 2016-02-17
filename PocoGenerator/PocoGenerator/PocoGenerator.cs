@@ -382,19 +382,26 @@ namespace PocoGenerator
 
         private void RenderOutput(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto)
         {
-            //rtxtOutput.Text = _renderOutputtables.RenderOutput(tableWithColumnsDto);
-            rtxtOutput.Clear();
+            ////rtxtOutput.Text = _renderOutputtables.RenderOutput(tableWithColumnsDto);
+            //rtxtOutput.Clear();
 
-            rtxtOutput.AppendColoredText(_renderOutputtables.RenderOutput(tableWithColumnsDto), Color.Blue);
+            //rtxtOutput.AppendColoredText(_renderOutputtables.RenderOutput(tableWithColumnsDto), Color.Blue);
         }
 
         private void RenderOutput(TablesWithColumnsDto tableWithColumnsDto)
         {
-            //rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
+            ////rtxtOutput.Text = _renderOutputtable.RenderOutput(tableWithColumnsDto);
 
-            rtxtOutput.Clear();
+            //rtxtOutput.Clear();
 
-            rtxtOutput.AppendColoredText( _renderOutputtable.RenderOutput(tableWithColumnsDto), Color.Blue);
+            //rtxtOutput.AppendColoredText( _renderOutputtable.RenderOutput(tableWithColumnsDto), Color.Blue);
+
+            webBrowser1.DocumentText = "<font face='Consolas'>" + _renderOutputtable.RenderOutput(tableWithColumnsDto) + "</b>";
+            webBrowser1.Document.ExecCommand("SelectAll", false, null);
+            webBrowser1.Document.ExecCommand("Copy", false, null);
+
+            rtxtOutput.Paste();
+
         }
 
         //private void Render(IEnumerable<TablesWithColumnsDto> tableWithColumnsDto = null, TablesWithColumnsDto singleTable = null)

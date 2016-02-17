@@ -40,6 +40,7 @@
             this.lblNamespace = new System.Windows.Forms.Label();
             this.pnlMenuBar = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scBody)).BeginInit();
             this.scBody.Panel1.SuspendLayout();
@@ -99,6 +100,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.webBrowser1);
             this.panel1.Controls.Add(this.rtxtOutput);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 160);
@@ -175,6 +177,15 @@
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(966, 658);
+            this.webBrowser1.TabIndex = 3;
+            // 
             // PocoGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,6 +227,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox rtxtOutput;
         private System.Windows.Forms.CheckBox chkRelations;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

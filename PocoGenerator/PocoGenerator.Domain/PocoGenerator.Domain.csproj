@@ -71,6 +71,7 @@
     <Compile Include="Interfaces\IRetrieveDbObjectsRepository.cs" />
     <Compile Include="Interfaces\IRetrieveDbObjectsService.cs" />
     <Compile Include="Interfaces\Templates\ITemplate.cs" />
+    <Compile Include="PocoConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BlankSpace\ClassBlankSpaceService.cs" />
     <Compile Include="Services\BlankSpace\PropertiesBlankSpaceService.cs" />
